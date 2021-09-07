@@ -1,10 +1,7 @@
-# no .bin files
-*.bin
-
-# no .class files
 *.class
-
-# no .xml files
-*.xml
-
+.classpath 
+.project
+.settings/
+bin/
+target/
 #

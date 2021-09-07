@@ -21,8 +21,6 @@ import lombok.ToString;
 @ToString
 @Table(name="R_USER_TYPE")
 public class RUserType {
-	
-	
 	@Id
 	@Column(name = "USER_TYPE")
 	private String userType; 

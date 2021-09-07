@@ -4,3 +4,7 @@
 # no .class files
 .class
 
+# no .xml files
+.xml
+
+#

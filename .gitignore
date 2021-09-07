@@ -1,10 +1,10 @@
 # no .bin files
-.bin
+*.bin
 
 # no .class files
-.class
+*.class
 
 # no .xml files
-.xml
+*.xml
 
 #

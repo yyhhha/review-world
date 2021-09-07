@@ -1,0 +1,6 @@
+# no .bin files
+.bin
+
+# no .class files
+.class
+

@@ -2,6 +2,7 @@ package review.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -33,7 +34,7 @@ public class RUser {
 	@Column(name = "USER_EMAIL")
 	private String userEmail; 
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "USER_TYPE")
 	private RUserType userType; 
 	

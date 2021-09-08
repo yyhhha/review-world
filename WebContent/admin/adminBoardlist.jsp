@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -38,34 +38,38 @@ a {
 <!-- ************************************************ -->
 
 
-  <div style="padding:20px 100px 20px 215px" class="w3-container">
-    <h5> 게시글 목록 </h5>
-    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" >
-      <tr align="center">
-      	<td width="100"> 카테고리</td>
-      	<td width="500" >제목</td>
-      	<td>작성자</td>
-        <td>추천수</td>
-        <td>조회수</td>
-        <td>작성일</td>
-        <td>선택</td>
-      </tr>
-      
-     <c:forEach items="${requestScope.boardlistAll}" var="data" >
-     <tr>
-     	<td>${data.categoryName}</td>
-      	<td width="500" >${data.title}</td>
-      	<td>${data.nickname}</td>
-        <td>${data.likes}</td>
-        <td>${data.views}</td>
-        <td>${data.boardDate}</td>
-        <td><input type="checkbox" name="checkBoardId"></td>
-      </tr>
-      </c:forEach>
-   
-    </table><br>
-    <button class="w3-button w3-dark-grey">More Countries &nbsp;<i class="fa fa-arrow-right"></i></button>
-  </div>
+<div style="padding: 20px 100px 20px 215px" class="w3-container">
+	<h5>게시글 목록</h5>
+	<table
+		class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+		<tr align="center">
+			<td width="100">카테고리</td>
+			<td width="500">제목</td>
+			<td>작성자</td>
+			<td>추천수</td>
+			<td>조회수</td>
+			<td>작성일</td>
+			<td>선택</td>
+		</tr>
+
+		<c:forEach items="${requestScope.boardlistAll}" var="data">
+			<tr>
+				<td>${data.categoryName}</td>
+				<td width="500">${data.title}</td>
+				<td>${data.nickname}</td>
+				<td>${data.likes}</td>
+				<td>${data.views}</td>
+				<td>${data.boardDate}</td>
+				<td><input type="checkbox" name="checkBoardId"></td>
+			</tr>
+		</c:forEach>
+
+	</table>
+	<br>
+	<button class="w3-button w3-dark-grey">
+		More Countries &nbsp;<i class="fa fa-arrow-right"></i>
+	</button>
+</div>
 
 
 

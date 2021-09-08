@@ -11,7 +11,7 @@
 <body>
 <h2>whogi Login Form</h2>
     <div class="container">
-	    <form action="" method="post">
+	    <form action="reviewy" method="post">
 		<input type="hidden" name="command" value="userInsert">
 	      <label for="uid"><b>Id</b></label>
 	      <input type="text" placeholder="Enter ID" name="uid" required>

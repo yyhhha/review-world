@@ -14,6 +14,9 @@ public class ReviewService {
 	}
 	
 	private static BoardDAO boardDAO = BoardDAO.getInstance();
+	private static CategoryDAO categoryDAO = CategoryDAO.getInstance();
+	private static UserTypeDAO userTypeDAO = UserTypeDAO.getInstance();
+	private static CommentDAO commentDAO = CommentDAO.getInstance();
 	
 	public boolean addBorad(String userId) throws MessageException{
 		boolean result = false;

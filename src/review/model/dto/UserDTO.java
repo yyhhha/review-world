@@ -18,7 +18,7 @@ public class UserDTO {
 	private String userId;
 	private String userPw;
 	private String nickName;
-	private RUserType userType;
+	private String userType;
 	private String userEmail;
 	
 	
@@ -39,8 +39,8 @@ public class UserDTO {
 
 	}
 	
-	public RUser toEntity() {
-		return RUser.builder().userId(userId).userPw(userPw).nickName(nickName).userType(userType).userEmail(userEmail).build();
-
-	}
+//	public RUser toEntity() {
+//		return RUser.builder().userId(userId).userPw(userPw).nickName(nickName).userType(userType).userEmail(userEmail).build();
+//
+//	}
 }

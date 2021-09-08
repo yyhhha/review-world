@@ -39,11 +39,6 @@ public class UserDTO {
 
 	}
 	
-//	public RUser toEntity() {
-//		return RUser.builder().userId(userId).userPw(userPw).nickName(nickName).userType(userType).userEmail(userEmail).build();
-//
-//	}
-	
 	public RUser toEntity() {
 		RUser ruser = new RUser();
 		ruser.setUserId(userId);

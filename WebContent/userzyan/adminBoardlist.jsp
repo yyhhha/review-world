@@ -39,22 +39,26 @@ a {
 
 
   <div style="padding:20px 100px 20px 215px" class="w3-container">
-    <h5> 회원 목록 </h5>
+    <h5> 게시글 목록 </h5>
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white" >
       <tr align="center">
-      	<td>아이디 </td>
-      	<td>닉네임</td>
-        <td>유저타입</td>
-        <td>이메일</td>
+      	<td width="100"> 카테고리</td>
+      	<td width="500" >제목</td>
+      	<td>작성자</td>
+        <td>추천수</td>
+        <td>조회수</td>
+        <td>작성일</td>
         <td>선택</td>
       </tr>
       
-     <c:forEach items="${requestScope.memberlistAll}" var="mdata" >
+     <c:forEach items="${requestScope.boardlistAll}" var="data" >
      <tr>
-     	<td>${mdata.userId}</td>
-      	<td>${mdata.nickName}</td>
-        <td>${mdata.userType}</td>
-        <td>${mdata.userEmail}</td>
+     	<td>${data.categoryName}</td>
+      	<td width="500" >${data.title}</td>
+      	<td>${data.nickname}</td>
+        <td>${data.likes}</td>
+        <td>${data.views}</td>
+        <td>${data.boardDate}</td>
         <td><input type="checkbox" name="checkBoardId"></td>
       </tr>
       </c:forEach>

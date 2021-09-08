@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import review.model.dao.ReviewService;
 import review.model.dto.UserDTO;
 
-@WebServlet("/review")
+@WebServlet("/review2")
 public class ReviewFrontController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,6 +23,12 @@ public class ReviewFrontController extends HttpServlet {
 			boardInsert(request, response);
 		}else if(command.equals("boardlistAll")) {
 			boardlistAll(request,response);
+		}else if(command.equals("memberlistAll")) { //★몰래 넣어둠..멤버 list 테스트중..
+			memberlistAll(request,response);
+		}else if(command.equals("categotyUpdate")){//재능 기부자 정보 수정 요청
+			categotyUpdateReq(request, response);
+		}else if(command.equals("categotyUpdate")){//재능 기부자 정보 수정
+			categotyUpdate(request, response);
 		}else {
 			
 		}
@@ -76,8 +82,48 @@ public class ReviewFrontController extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 		}
 	
+		//★모든 멤버 조회 리스트
+		public void memberlistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("memberlistAll", ReviewService.getMemberlistAll());
+				url = "/admin/adminMemberlist.jsp";
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+		//■ 어드민 카테고리 수정 요구
+		public void categotyUpdateReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("board", ReviewService.getBoard(request.getParameter("BoardId")));
+				url = "/admin/adminBoardlist.jsp";
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
 	
-	
+		//■ 어드민 카테고리 수정  
+		public void categotyUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				if(ReviewService.updateCategory(request.getParameter("BoardId"), request.getParameter("categoryId"))) {
+					request.setAttribute("board", ReviewService.getBoard(request.getParameter("BoardId")));
+					url = "activist/activistDetail.jsp";
+				}else {
+					request.setAttribute("errorMsg", "저장 실패");
+				}
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
 	
 	
 	// 유저 가입 메소드

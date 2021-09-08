@@ -52,6 +52,7 @@ a {
 			<td>선택</td>
 		</tr>
 
+	<<form action="#" method="post">
 		<c:forEach items="${requestScope.boardlistAll}" var="data">
 			<tr>
 				<td>${data.categoryName}</td>
@@ -65,9 +66,21 @@ a {
 		</c:forEach>
 
 	</table>
+
 	<br>
 	<button class="w3-button w3-dark-grey">
 		More Countries &nbsp;<i class="fa fa-arrow-right"></i>
+
+	
+<br>
+<br>
+	<button  type="submit" class="w3-button w3-dark-grey">
+		수정하기 &nbsp;<i class="fa fa-arrow-right"></i>
+	</button>
+
+	<button type="submit" class="w3-button w3-dark-grey">
+		삭제하기 &nbsp;<i class="fa fa-arrow-right"></i>
+
 	</button>
 </div>
 

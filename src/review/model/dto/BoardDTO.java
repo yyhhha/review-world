@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import review.model.entity.RCategory;
+import review.model.entity.RBoard;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +23,7 @@ public class BoardDTO {
 	private String categoryName; 
 	private String nickname;
 	private String userId;
+	private String categoryId;
 
 
 	@Override
@@ -45,12 +46,16 @@ public class BoardDTO {
 		builder.append(views);
 		builder.append(" 좋아요 : ");
 		builder.append(likes);
+		builder.append(nickname);
+		builder.append(userId);
+		builder.append(categoryId);
+		
 		return builder.toString();
 	}
 
 //	public RBoard toEntity() {
-//		return RBoard.builder().boardId(boardId).title(title).categoryId(categoryId).views(views).likes(likes).
-//				content(content).boardDate(boardDate).userId(userId).build();
+//		return RBoard.builder().boardId(boardId).title(title).views(views).likes(likes).
+//				content(content).userId(userId).build();
 //	}
 
 }

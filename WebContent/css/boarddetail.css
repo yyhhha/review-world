@@ -1,9 +1,4 @@
 /* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
-#editor {
-	display : block;
-}
-
-
 html {
 	box-sizing: border-box
 }
@@ -272,7 +267,7 @@ a {
 }
 
 .w3-table-all {
-	border: 1px solid #cccf
+	border: 1px solid #ccc
 }
 
 .w3-bordered tr, .w3-table-all tr {
@@ -311,11 +306,6 @@ a {
 	padding-left: 16px
 }
 
-.w3-theme {
-    color: #fff;
-    background-color: #7d3a3a;
-}
-
 .w3-btn, .w3-button {
 	border: none;
 	display: inline-block;
@@ -323,8 +313,8 @@ a {
 	vertical-align: middle;
 	overflow: hidden;
 	text-decoration: none;
-	color: white;
-	background-color: #7d97a5;
+	color: inherit;
+	background-color: inherit;
 	text-align: center;
 	cursor: pointer;
 	white-space: nowrap
@@ -976,7 +966,7 @@ a {
 }
 
 .w3-container, .w3-panel {
-	padding:10px 100px 10px 350px
+	padding: 0.01em 16px
 }
 
 .w3-panel {

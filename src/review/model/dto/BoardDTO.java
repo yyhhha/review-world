@@ -23,6 +23,7 @@ public class BoardDTO {
 	private String categoryName; 
 	private String nickname;
 	private String userId;
+	private String categoryId;
 
 
 	@Override
@@ -45,6 +46,10 @@ public class BoardDTO {
 		builder.append(views);
 		builder.append(" 좋아요 : ");
 		builder.append(likes);
+		builder.append(nickname);
+		builder.append(userId);
+		builder.append(categoryId);
+		
 		return builder.toString();
 	}
 

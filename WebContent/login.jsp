@@ -11,11 +11,14 @@
 <body>
 <h2>whogi Login Form</h2>
     <div class="container">
+    	<form action="reviewy" method="post">
+    	<input type="hidden" name="command" value="userLogin">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
       <button type="submit">Login</button>
+      </form>
       <button type="button" onclick="location.href='signin.jsp'">sign in</button>
     </div>
     <div class="container" style="background-color:#f1f1f1">

@@ -66,6 +66,11 @@ a {
 		</c:forEach>
 
 	</table>
+
+	<br>
+	<button class="w3-button w3-dark-grey">
+		More Countries &nbsp;<i class="fa fa-arrow-right"></i>
+
 	
 <br>
 <br>
@@ -75,6 +80,7 @@ a {
 
 	<button type="submit" class="w3-button w3-dark-grey">
 		삭제하기 &nbsp;<i class="fa fa-arrow-right"></i>
+
 	</button>
 </div>
 

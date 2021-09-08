@@ -85,15 +85,15 @@ public class ReviewFrontControllerZyan extends HttpServlet {
 	
 	//게시글 수정 - 진행중
 	public void boardUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
-		try {
-			request.setAttribute("boardUpdate", reviewService.getActivist(request.getParameter("activistId")));
-			url = "activist/activistUpdate.jsp";
-		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
-			s.printStackTrace();
-		}
-		request.getRequestDispatcher(url).forward(request, response);
+//		String url = "showError.jsp";
+//		try {
+//			request.setAttribute("boardUpdate", reviewService.getActivist(request.getParameter("activistId")));
+//			url = "activist/activistUpdate.jsp";
+//		}catch(Exception s){
+//			request.setAttribute("errorMsg", s.getMessage());
+//			s.printStackTrace();
+//		}
+//		request.getRequestDispatcher(url).forward(request, response);
 	}
 	
 	// 유저 가입 메소드

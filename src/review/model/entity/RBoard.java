@@ -46,7 +46,7 @@ public class RBoard {
 	
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
-	private RCategory categoryId;
+	private RCategory category;
 	
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")

@@ -20,8 +20,10 @@ public class BoardDTO {
 	private String boardDate;
 	private int views;
 	private int likes;
-	private RCategory categoryId; 
-	private UserDTO userId;
+	private String categoryName; 
+	private String nickname;
+	private String userId;
+
 
 	@Override
 	public String toString() {
@@ -32,7 +34,7 @@ public class BoardDTO {
 		builder.append(" 제목 : ");
 		builder.append(title);
 		builder.append(" 카테고리 : ");
-		builder.append(categoryId);
+		builder.append(categoryName);
 		builder.append(" 내용 : ");
 		builder.append(content);
 		builder.append(" 작성일 : ");

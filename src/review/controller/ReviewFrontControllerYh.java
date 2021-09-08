@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import review.model.dao.ReviewService;
 import review.model.dto.UserDTO;
 
-@WebServlet("/review")
+@WebServlet("/reviewy")
 public class ReviewFrontControllerYh extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

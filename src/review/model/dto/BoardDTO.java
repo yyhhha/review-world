@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import review.model.entity.RCategory;
+import review.model.entity.RBoard;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,8 +49,8 @@ public class BoardDTO {
 	}
 
 //	public RBoard toEntity() {
-//		return RBoard.builder().boardId(boardId).title(title).categoryId(categoryId).views(views).likes(likes).
-//				content(content).boardDate(boardDate).userId(userId).build();
+//		return RBoard.builder().boardId(boardId).title(title).views(views).likes(likes).
+//				content(content).userId(userId).build();
 //	}
 
 }

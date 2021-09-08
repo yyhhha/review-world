@@ -15,18 +15,18 @@ public class ReviewServiceZyan {
 	public static ReviewServiceZyan getInstance() {
 		return instance;
 	}
-	
+	 
 	private static BoardDAO boardDAO = BoardDAO.getInstance();
 	private static CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	private static UserTypeDAO userTypeDAO = UserTypeDAO.getInstance();
 	private static CommentDAO commentDAO = CommentDAO.getInstance();
 	
-	public boolean addBorad(String userId) throws MessageException{
+	public boolean addBorad(BoardDTO board) throws MessageException{
 		boolean result = false;
 		try{
-			result = boardDAO.addBoard(userId);
+			result = boardDAO.addBoard(board);
 		}catch(SQLException s){
-			throw new MessageException("");
+			throw new MessageException("sql error");
 		}
 		return result;
 	}

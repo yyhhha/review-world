@@ -25,18 +25,23 @@ public class BoardDAO {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;
-		
+		System.out.println("board"+board);
+		System.out.println("DAOtest1");
 		try {
+			System.out.println("DAOtest2");
 			RBoard rBoard = new RBoard();
 			rBoard.setUserId(em.find(RUser.class, board.getUserId()));
+			System.out.println("DAOtest3");
 			rBoard.setCategory(em.find(RCategory.class, board.getCategoryName()));
+			System.out.println("DAOtest4");
 			rBoard.setContent(board.getContent());
 			rBoard.setTitle(board.getTitle());
 			
-			System.out.println(rBoard);
+			System.out.println("rBoard"+rBoard.getBoardId()+rBoard.getUserId());
 			em.persist(rBoard);
+			System.out.println("persist");
 			em.getTransaction().commit();
-			
+			System.out.println("commit");
 			result = true;
 		} catch (Exception e) {
 			em.getTransaction().rollback();

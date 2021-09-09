@@ -13,7 +13,7 @@ import review.model.dao.ReviewService;
 import review.model.dto.BoardDTO;
 import review.model.dto.UserDTO;
 
-@WebServlet("/review")
+@WebServlet("/review2")
 public class ReviewFrontControllerzyan extends HttpServlet {
 
 	private static ReviewService reviewService = ReviewService.getInstance();
@@ -31,7 +31,6 @@ public class ReviewFrontControllerzyan extends HttpServlet {
 			} else if (command.equals("boardUpdate")) {
 //				boardUpdate(request,response);
 			} else if (command.equals("boardDelete")) {
-				System.out.println("command test");
 				boardDelete(request, response);
 			} else if (command.equals("boardDetail")) {
 				boardDetail(request, response);

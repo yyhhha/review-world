@@ -24,11 +24,12 @@
 <title>게시글 확인</title>
 </head>
 <body class="w3-light-grey">
+
 	<div>
-		<jsp:include page="../common/header.jsp" />
+		<jsp:include page="/common/header.jsp" />
 	</div>
 	<nav>
-		<jsp:include page="../common/nav.jsp" />
+		<jsp:include page="/common/nav.jsp" />
 	</nav>
 
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">

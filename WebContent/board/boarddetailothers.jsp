@@ -11,7 +11,7 @@
 </head>
 <body class="w3-theme-l5">
 
-<div class="w3-container">
+	<div class="w3-container">
       <h3><b>제목 ${requestScope.title}</b></h3>
       <h5>카테고리${requestScope.category}, <span class="w3-opacity">April 7, 2014</span></h5>
     </div>
@@ -21,7 +21,6 @@
       <div class="w3-row">
         <div class="w3-col m8 s12">
           <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="location.href='${pageContext.request.contextPath}/reviewz?command=boardlistAll'"><b>list &raquo;</b></button>
-          <button class="w3-button w3-padding-large w3-white w3-border" onclick="location.href='${pageContext.request.contextPath}/reviewz?command=boardUpdate'"><b>edit &raquo;</b></button>
           </p>
         </div>
         <div class="w3-col m4 w3-hide-small">
@@ -29,7 +28,6 @@
         </div>
       </div>
     </div>
-
 
 <%-- <c:if test="${not empty requestScope.board}">
 	<table border="1">

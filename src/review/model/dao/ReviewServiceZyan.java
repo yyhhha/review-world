@@ -21,6 +21,7 @@ public class ReviewServiceZyan {
 	private static UserTypeDAO userTypeDAO = UserTypeDAO.getInstance();
 	private static CommentDAO commentDAO = CommentDAO.getInstance();
 	
+	//게시글 추가
 	public boolean addBorad(BoardDTO board) throws MessageException{
 		boolean result = false;
 		try{
@@ -31,16 +32,30 @@ public class ReviewServiceZyan {
 		return result;
 	}
 	
+	//게시물 삭제
+	public boolean deleteBoard(String probonoId) throws SQLException, NotExistException{
+		return boardDAO.deleteBoard(probonoId);
+	}
 	
-	public static List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
+	//게시물 상세보기
+	public BoardDTO getBoard(int boardId) throws SQLException{
+		return boardDAO.getBoard(boardId);
+	}
+	
+	//**게시물 전체 보기
+	public  List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
 		List<BoardDTO> boardlistAll = AdminDAO.getBoardlistAll();
 		
 		if(boardlistAll == null){
-			throw new NotExistException("검색하는 재능기부 프로젝트가 미 존재합니다.");
+			throw new NotExistException("");
 		}
 		
 		return boardlistAll;
-		
+	}
+
+	//게시글 수정
+	public boolean updateBoard(String boardId, String title, String content) throws SQLException,NotExistException{
+		return boardDAO.updateBoard(boardId, title, content);
 	}
 	
 }

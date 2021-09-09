@@ -1,12 +1,8 @@
 package review.model.dao;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.persistence.EntityManager;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import review.model.dto.BoardDTO;
 import review.model.entity.RBoard;
@@ -50,16 +46,70 @@ public class BoardDAO {
 		return result;
 	}
 	
-	//모든 게시글 조회
-	public void boardlistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
+	//게시물 삭제
+	public boolean deleteBoard(String boardId) {
+		EntityManager em =DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+		
 		try {
-			request.setAttribute("boardlistAll", ReviewService.getBoardlistAll());
-			url = "/admin/adminBoardlist.jsp";
-		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
-			s.printStackTrace();
+			em.remove(em.find(RBoard.class, boardId));
+			em.getTransaction().commit();
+			result = true;
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+			em = null;
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		
+		return result;
+	}	
+	
+	//게시글 수정
+	public boolean updateBoard(String boardId, String title, String content) throws SQLException {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+
+		try {
+			em.find(RBoard.class, boardId).setTitle(title);;
+			em.find(RBoard.class, boardId).setContent(content);
+			
+			em.getTransaction().commit();
+
+			result = true;
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		return result;
+	}
+	
+	//게시글 조회
+	public BoardDTO getBoard(int boardId) throws SQLException{
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		BoardDTO board = null;
+
+		try {
+			RBoard rBoard = em.find(RBoard.class, boardId);
+			String userId = rBoard.getCategory().getCategoryId();
+			String categoryId = rBoard.getCategory().getCategoryId();
+			String categoryName = rBoard.getCategory().getCategoryName();
+			board = new BoardDTO();
+			//boardId인 DTO를 새로 생성해서 return하기 위한 빌더 - categoryName과 nickName은 entity에 없기 때문에 못가져옴. 
+			board.builder().userId(userId).title(rBoard.getTitle()).content(rBoard.getContent())
+						   .boardDate(rBoard.getBoardDate()).views(rBoard.getViews()).likes(rBoard.getLikes())
+						   .categoryName(categoryName).categoryId(categoryId).boardId(boardId)
+						   .build();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		
+		return board;
 	}
 }

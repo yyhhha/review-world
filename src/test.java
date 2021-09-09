@@ -36,13 +36,14 @@ public class test {
 		em.getTransaction().begin();
 		
 		RUser user = em.find(RUser.class, "dkdk");
-		RBoard board = new RBoard();
-		board.setTitle("제목");
-		board.setContent("안녕");
-		board.setUserId(user);
-		
-		em.persist(board);
-		em.getTransaction().commit();
+		System.out.println(user);
+//		RBoard board = new RBoard();
+//		board.setTitle("제목");
+//		board.setContent("안녕");
+//		board.setUserId(user);
+//		
+//		em.persist(board);
+//		em.getTransaction().commit();
 
 //		
 //		RBoard board1 = em.find(RBoard.class, 4);

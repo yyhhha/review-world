@@ -14,7 +14,7 @@ html, body, h1, h2, h3, h4, h5 {
 }
 </style>
 <body class="w3-light-grey">
-
+​
 	<!-- Top container -->
 	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
 		<button
@@ -24,7 +24,7 @@ html, body, h1, h2, h3, h4, h5 {
 		</button>
 		<span class="w3-bar-item w3-right">Logo</span>
 	</div>
-
+​
 	<!-- Sidebar/menu -->
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 		style="z-index: 3; width: 300px;" id="mySidebar">
@@ -38,7 +38,7 @@ html, body, h1, h2, h3, h4, h5 {
 				<span> 반가워요! <br> 
 				<a href="login.jsp"><strong>로그인 하시고 모든 종류의 후기를 보세요!</strong></a></span>
 				<a class="w3-bar-item w3-button"><i	class="fa fa-sign-in w3-xlarge"></i></a>
-
+​
 			</div>
 		</div>
 		<hr>
@@ -60,25 +60,25 @@ html, body, h1, h2, h3, h4, h5 {
 			<br><br>
 		</div>
 	</nav>
-
-
+​
+​
 	<!-- Overlay effect when opening sidebar on small screens -->
 	<div class="w3-overlay w3-hide-large w3-animate-opacity"
 		onclick="w3_close()" style="cursor: pointer" title="close side menu"
 		id="myOverlay"></div>
-
+​
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-
+​
 		<!-- Header -->
-
+​
 		<header class="w3-container" style="padding-top: 22px">
 			<h5>
 				<b><i class="fa fa-dashboard"></i> 로그인하셔야 볼 수 있습니다.</b>
 			</h5>
 		</header>
-
-
+​
+​
 		<br> <br> <br>
 		<div class="w3-container" align="center">
 			<a href="login.jsp"><button class="w3-button w3-black">
@@ -91,8 +91,8 @@ html, body, h1, h2, h3, h4, h5 {
 					회원가입 하기 &nbsp;<i class="fa fa-arrow-right"></i>
 				</button></a>
 		</div>
-
-
+​
+​
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-16 w3-light-grey">
 			<h4>(주)후기적후기적컴퍼니</h4>
@@ -103,17 +103,17 @@ html, body, h1, h2, h3, h4, h5 {
 				문의사항:사절합니다.</a>
 			</p>
 		</footer>
-
+​
 		<!-- End page content -->
 	</div>
-
+​
 	<script>
 		// Get the Sidebar
 		var mySidebar = document.getElementById("mySidebar");
-
+​
 		// Get the DIV with overlay effect
 		var overlayBg = document.getElementById("myOverlay");
-
+​
 		// Toggle between showing and hiding the sidebar, and add overlay effect
 		function w3_open() {
 			if (mySidebar.style.display === 'block') {
@@ -124,13 +124,13 @@ html, body, h1, h2, h3, h4, h5 {
 				overlayBg.style.display = "block";
 			}
 		}
-
+​
 		// Close the sidebar with the close button
 		function w3_close() {
 			mySidebar.style.display = "none";
 			overlayBg.style.display = "none";
 		}
 	</script>
-
+​
 </body>
 </html>

@@ -19,20 +19,17 @@
 <h2>Find </h2>
 
     <div class="container">
-      
-      
+      <form action="reviewy" method="post">
+      <input type="hidden" name="command" value="FindByEmail">
       <label for="USER_EMAIL"><b>USER_EMAIL</b></label>
       <input type="text" placeholder="Enter USER_EMAIL" name="USER_EMAIL" required>
      
       <button type="submit">Find</button>
-      <label>
-        
-      </label>
+      </form>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      
+      <button type="button" onclick="location.href='login.jsp'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>

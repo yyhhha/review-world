@@ -2,6 +2,7 @@ package review.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import review.model.dto.BoardDTO;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,11 +41,11 @@ public class RComment {
 	@Column(name = "COMMENT_DATE")
 	private String commentDate;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "BOARD_ID")
 	private RBoard boardId;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "USER_ID")
 	private RUser userId; 
 }

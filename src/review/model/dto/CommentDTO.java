@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import review.model.entity.RComment;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,10 +14,10 @@ import lombok.Setter;
 @Builder
 public class CommentDTO {
 
-	private BoardDTO boardId;
+	private int boardId;
 	private String commentContent;
 	private String commentDate;
-	private UserDTO userId;
+	private String userId;
 	private int commentId; 
 	
 	

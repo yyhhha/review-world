@@ -49,20 +49,22 @@ a {
         <td>선택</td>
       </tr>
       
+      <form action="review?command=멤버삭제" method="post">
      <c:forEach items="${requestScope.memberlistAllAdmin}" var="mdata" >
      <tr>
      	<td>${mdata.userId}</td>
       	<td>${mdata.nickName}</td>
         <td>${mdata.userType}</td>
-        <td>${mdata.userEmail}</td>
-        <td><input type="checkbox" name="checkBoardId"></td>
-      </tr>
+		<td>${mdata.userEmail}</td>
+		<td><input type="checkbox" name="del-mem"
+		value="${mdata.userId}"></td>
+	</tr>
       </c:forEach>
    
     </table><br>
-    <button class="w3-button w3-dark-grey">More Countries &nbsp;<i class="fa fa-arrow-right"></i></button>
+    <button class="w3-button w3-dark-grey">강제회원 탈퇴 &nbsp;<i class="fa fa-arrow-right"></i></button>
   </div>
-
+	</form>
 
 
 

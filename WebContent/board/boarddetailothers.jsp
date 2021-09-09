@@ -20,7 +20,7 @@
       <p>내용 ${requestScope.content}</p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
-          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="location.href='${pageContext.request.contextPath}/reviewz?command=boardlistAll'"><b>list &raquo;</b></button>
+          <p><button class="w3-button w3-padding-large w3-white w3-border" onclick="location.href='${pageContext.request.contextPath}/review?command=boardlistAll'"><b>list &raquo;</b></button>
           </p>
         </div>
         <div class="w3-col m4 w3-hide-small">
@@ -46,7 +46,7 @@
 	별도의 부서가 없는 회사입니다.
 </c:if>	 --%>
 
-<%-- <form action="reviewZ?command=boardInsert" method="post">
+<%-- <form action="review?command=boardInsert" method="post">
 	<div id="editor">
 	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px"> 
 		<div class="w3-col m7">

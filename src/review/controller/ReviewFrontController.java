@@ -1,8 +1,6 @@
 package review.controller;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import review.model.dao.ReviewService;
-import review.model.dao.ReviewServiceYh;
+import review.model.dto.BoardDTO;
 import review.model.dto.UserDTO;
 
 @WebServlet("/review")
 public class ReviewFrontController extends HttpServlet {
+
+	private static ReviewService reviewService = ReviewService.getInstance();
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -26,10 +26,18 @@ public class ReviewFrontController extends HttpServlet {
 		try {
 			if (command.equals("boardInsert")) {
 				boardInsert(request, response);
-			} else if (command.equals("boardlistAllAdmin")) {
-				boardlistAllAdmin(request, response);
 			} else if (command.equals("boardlistAllUser")) {
 				boardlistAllUser(request, response);
+			} else if (command.equals("boardUpdate")) {
+//				boardUpdate(request,response);
+			} else if (command.equals("boardDelete")) {
+				boardDelete(request, response);
+			} else if (command.equals("boradDetail")) {
+				boradDetail(request, response);
+
+				// 어드민---------------------------------
+			} else if (command.equals("boardlistAllAdmin")) {
+				boardlistAllAdmin(request, response);
 			} else if (command.equals("memberlistAllAdmin")) { // ★몰래 넣어둠..멤버 list 테스트중..
 				memberlistAll(request, response);
 			} else if (command.equals("userLogin")) {
@@ -39,6 +47,15 @@ public class ReviewFrontController extends HttpServlet {
 			} else if (command.equals("삭제")) {// 게시글 일괄 삭제
 				deleteBoardAll(request, response);
 
+				// 회원가입 관련-------------------------
+			} else if (command.equals("FindByEmail")) {
+				FindByEmail(request, response);
+			} else if (command.equals("userLogin")) {
+				userLogin(request, response);
+			} else if (command.equals("deleteUser")) {
+				deleteUser(request, response);
+			} else if (command.equals("userInsert")) {
+				userInsert(request, response);
 			} else {
 
 			}
@@ -50,33 +67,33 @@ public class ReviewFrontController extends HttpServlet {
 		}
 	}
 
-	protected void boardInsert(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void boardInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String pw = request.getParameter("pw");
-		String major = request.getParameter("major");
+		BoardDTO board = new BoardDTO();
+		board.builder().userId(request.getParameter("id"))
+					   .nickname(request.getParameter("nickName"))
+					   .categoryName(request.getParameter("category"))
+					   .title(request.getParameter("title"))
+					   .content(request.getParameter("content"))
+					   .build();
+		//강사님은 컨트롤러에서 빌드 미사용. 괜찮으려나?
+		
+		try {
+			boolean result = reviewService.addBorad(board);
+			if (result) {
+				request.setAttribute("board", board);
+				//request.setAttribute("successMsg", "게시글 작성 완료");
+				url = "board/boardetail.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception e) {
+			request.setAttribute("errorMsg", e.getMessage());
+			e.printStackTrace();
+		}
 
-		// 해킹등으로 불합리하게 요청도 될수 있다는 가정하에 모든 데이터가 제대로 전송이 되었는지를 검증하는 로직
-//		if(id != null && id.length() !=0 && name != null) {
-//		
-//			ActivistDTO activist = new ActivistDTO(id, name, pw, major);
-//			try{
-//				boolean result = probonoService.addActivist(activist);
-//				if(result){
-//					request.setAttribute("activist", activist);
-//					request.setAttribute("successMsg", "가입 완료");
-//					url = "activist/activistDetail.jsp";
-//				}else{
-//					request.setAttribute("errorMsg", "다시 시도하세요");
-//				}
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	// 모든 게시글 조회 리스트
@@ -84,7 +101,7 @@ public class ReviewFrontController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("boardlistAllAdmin", ReviewService.getBoardlistAll());
+			request.setAttribute("boardlistAllAdmin", reviewService.getBoardlistAll());
 			url = "/admin/adminBoardlist.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -92,18 +109,19 @@ public class ReviewFrontController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-	
-	//유저 모든 게시글 조회
-	public void boardlistAllUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// 유저 모든 게시글 조회
+	public void boardlistAllUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("boardlistAllUser", ReviewService.getBoardlistAll());
+			request.setAttribute("boardlistAllUser", reviewService.getBoardlistAll());
 			System.out.println("=======================");
 			System.out.println("=======================");
 			System.out.println("=======================");
 			System.out.println(request.getAttribute("boardlistAllUser"));
 			url = "/user/userboardlist.jsp";
-		}catch(Exception s){
+		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();
 		}
@@ -129,7 +147,7 @@ public class ReviewFrontController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
-			request.setAttribute("commentlistAllAdmin", ReviewService.getCommentlistAll());
+			request.setAttribute("commentlistAllAdmin", reviewService.getCommentlistAll());
 			url = "/admin/adminCommentlist.jsp";
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -139,7 +157,8 @@ public class ReviewFrontController extends HttpServlet {
 	}
 
 	// 특정 게시글 일괄 삭제
-	private void deleteBoardAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void deleteBoardAll(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "showError.jsp";
 		String[] boardIds = request.getParameterValues("del-id");
 
@@ -149,7 +168,7 @@ public class ReviewFrontController extends HttpServlet {
 			System.out.println(boardIds[i]);
 		}
 		try {
-			boolean result = ReviewService.deleteBoardAll(boardIds);
+			boolean result = reviewService.deleteBoardAll(boardIds);
 			System.out.println(result);
 			if (result) {
 				url = "/admin/adminBoardlist.jsp";
@@ -165,48 +184,11 @@ public class ReviewFrontController extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-
-	// 유저 가입 메소드
-	protected void userInsert(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String url = "showError.jsp";
-
-		String id = request.getParameter("uid");
-		String nickName = request.getParameter("nickname");
-		String pw = request.getParameter("psw");
-		String email = request.getParameter("email");
-
-		// 해킹등으로 불합리하게 요청도 될수 있다는 가정하에 모든 데이터가 제대로 전송이 되었는지를 검증하는 로직
-		if (id != null && id.length() != 0 && nickName != null) {
-
-//					private String userId;
-//					private String userPw;
-//					private String nickName;
-//					private RUserType userType;
-//					private String userEmail;
-
-			UserDTO user = new UserDTO(id, pw, nickName, null, email);
-////					try{
-////						boolean result = probonoService.addActivist(activist);
-////						if(result){
-////							request.setAttribute("activist", activist);
-////							request.setAttribute("successMsg", "가입 완료");
-////							url = "activist/activistDetail.jsp";
-////						}else{
-////							request.setAttribute("errorMsg", "다시 시도하세요");
-////						}
-////					}catch(Exception s){
-//						request.setAttribute("errorMsg", s.getMessage());
-//					}
-//					request.getRequestDispatcher(url).forward(request, response);
-		}
-	}
-
 	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String url = "showErrorR.jsp";
 		UserDTO a;
 		try {
-			a = ReviewService.getUserForLogin(request.getParameter("uname"), request.getParameter("psw"));
+			a = reviewService.getUserForLogin(request.getParameter("uname"), request.getParameter("psw"));
 			HttpSession session = request.getSession();
 
 			if (a != null) {
@@ -236,5 +218,129 @@ public class ReviewFrontController extends HttpServlet {
 		response.sendRedirect(url);
 
 		}
+	}	
+		public void FindByEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showErrorYH.jsp";
+
+			String email = request.getParameter("USER_EMAIL");
+
+			// 해킹등으로 불합리하게 요청도 될수 있다는 가정하에 모든 데이터가 제대로 전송이 되었는지를 검증하는 로직
+			if (email != null && email.length() != 0) {
+				HttpSession session = request.getSession();
+				try {
+					UserDTO user = reviewService.getUser(email);
+					if (user != null) {
+						url = "user/userDetail.jsp";
+
+						String id = user.getUserId();
+						String nickName = user.getNickName();
+						String pw = user.getUserPw();
+
+						session.setAttribute("id", id);
+						session.setAttribute("nickName", nickName);
+						session.setAttribute("pw", pw);
+						session.setAttribute("email", email);
+						session.setAttribute("successMsg", "회원 정보");
+					} else {
+						session.setAttribute("errorMsg", "다시 시도하세요");
+
+					}
+				} catch (Exception s) {
+					session.setAttribute("errorMsg", s.getMessage());
+				}
+				response.sendRedirect(url);
+
+			}
+		}
+
+	
+
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showErrorYH.jsp";
+
+		String id = request.getParameter("uid");
+		String pw = request.getParameter("psw");
+
+		if (id != null && id.length() != 0 && pw != null) {
+			try {
+				boolean result = reviewService.deleteUser(id, pw);
+				if (result) {
+					request.setAttribute("successMsg", "삭제 완료");
+					url = "login.jsp";
+
+				} else {
+					request.setAttribute("errorMsg", "삭제 실패");
+
+				}
+			} catch (Exception s) {
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
 	}
+
+	// 유저 가입 메소드
+	protected void userInsert(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showErrorYH.jsp";
+//			String url = "showError.jsp";
+
+		String id = request.getParameter("uid");
+		String nickName = request.getParameter("nickname");
+		String pw = request.getParameter("psw");
+		String email = request.getParameter("email");
+
+		// 해킹등으로 불합리하게 요청도 될수 있다는 가정하에 모든 데이터가 제대로 전송이 되었는지를 검증하는 로직
+		if (id != null && id.length() != 0 && nickName != null) {
+			UserDTO user = new UserDTO(id, pw, nickName, null, email);
+			HttpSession session = request.getSession();
+			try {
+				boolean result = reviewService.addUser(user);
+				if (result) {
+					url = "user/userDetail.jsp";
+
+					session.setAttribute("id", id);
+					session.setAttribute("nickName", nickName);
+					session.setAttribute("pw", pw);
+					session.setAttribute("email", email);
+					session.setAttribute("successMsg", "가입 완료");
+				} else {
+					session.setAttribute("errorMsg", "다시 시도하세요");
+
+				}
+			} catch (Exception s) {
+				session.setAttribute("errorMsg", s.getMessage());
+			}
+			response.sendRedirect(url);
+		}
+	}
+
+	// 게시글 삭제
+	public void boardDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			if (reviewService.deleteBoard(request.getParameter("boardId"))) {
+				url = "/admin/adminBoardlist.jsp";
+			} else {
+				request.setAttribute("errorMsg", "저장 실패");
+			}
+			boardlistAllUser(request, response);
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 게시글 상세보기
+	public void boradDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			request.getAttribute("userId");
+			request.getAttribute("boardId");
+			
+//			session.getParameter
+		}
+
 }

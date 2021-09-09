@@ -17,10 +17,20 @@ import review.model.entity.RUser;
 import review.model.util.DBUtil;
 
 public class AdminDAO {
+	
+	
+	private AdminDAO() {}
+	
+	private static AdminDAO instance = new AdminDAO();
+	
+	public static AdminDAO getInstance() {
+		return instance;
+	}
+	
 
 	// 모든 게시글 리스트 검색
 	@SuppressWarnings("unchecked")
-	public static List<BoardDTO> getBoardlistAll() throws SQLException {
+	public List<BoardDTO> getBoardlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RBoard> list = null;
 		List<BoardDTO> resultList = new ArrayList<>();
@@ -48,7 +58,7 @@ public class AdminDAO {
 
 	// 모든 회원 목록
 	@SuppressWarnings("unchecked")
-	public static List<UserDTO> getMemberlistAll() throws SQLException {
+	public List<UserDTO> getMemberlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RUser> list = null;
 		List<UserDTO> memberList = new ArrayList<>();
@@ -69,7 +79,7 @@ public class AdminDAO {
 
 	// 모든 댓글 목록
 	@SuppressWarnings("unchecked")
-	public static List<CommentDTO> getCommentlistAll() throws SQLException {
+	public List<CommentDTO> getCommentlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RComment> list = null;
 		List<CommentDTO> commentlist = new ArrayList<>();
@@ -89,7 +99,7 @@ public class AdminDAO {
 	}
 
 	// 글id로 해당 글에 대한 모든 값 반환
-	public static BoardDTO getBoard(String boardId) throws SQLException {
+	public BoardDTO getBoard(String boardId) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		BoardDTO board = null;
@@ -107,7 +117,7 @@ public class AdminDAO {
 		return board;
 	}
 
-	public static boolean updateCategory(String boardId, String categoryId) {
+	public boolean updateCategory(String boardId, String categoryId) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;
@@ -126,7 +136,7 @@ public class AdminDAO {
 	}
 	
 	
-	public static boolean deleteBoardAll(String[] boardIds) {
+	public boolean deleteBoardAll(String[] boardIds) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;

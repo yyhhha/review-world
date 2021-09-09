@@ -22,31 +22,12 @@ public class ReviewService {
 	private static CategoryDAO categoryDAO = CategoryDAO.getInstance();
 	private static UserTypeDAO userTypeDAO = UserTypeDAO.getInstance();
 	private static CommentDAO commentDAO = CommentDAO.getInstance();
-	
-//	public boolean addBorad(String userId) throws MessageException{
-//		boolean result = false;
-//		try{
-//			result = boardDAO.addBoard(userId);
-//		}catch(SQLException s){
-//			throw new MessageException("");
-//		}
-//		return result;
-//	}
-	
-	
-	public static List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
-		List<BoardDTO> boardlistAll = AdminDAO.getBoardlistAll();
-		
-		if(boardlistAll == null){
-			throw new NotExistException("조회한 게시글 목록 값이 존재하지 않아요.");
-		}
-		
-		return boardlistAll;
-	}
+	private static UserDAO userDAO = UserDAO.getInstance();
+	private static AdminDAO adminDAO = AdminDAO.getInstance();
 
 	
 	public static List<UserDTO> getMemberlistAll() throws SQLException,NotExistException{
-		List<UserDTO> memberlistAll = AdminDAO.getMemberlistAll();
+		List<UserDTO> memberlistAll = adminDAO.getMemberlistAll();
 		
 		if(memberlistAll == null){
 			throw new NotExistException("조회한 회원 목록 값이 존재하지 않아요.");
@@ -57,7 +38,7 @@ public class ReviewService {
 	
 	//모든 댓글 조회
 	public static List<CommentDTO> getCommentlistAll() throws SQLException,NotExistException{
-		List<CommentDTO> commentlistAll = AdminDAO.getCommentlistAll();
+		List<CommentDTO> commentlistAll = adminDAO.getCommentlistAll();
 		
 		if(commentlistAll == null){
 			throw new NotExistException("조회한 댓글 목록 값이 존재하지 않아요.");
@@ -68,19 +49,13 @@ public class ReviewService {
 	
 	
 	//삭제 메소드 배열.. deleteBoardAll
-	public static boolean deleteBoardAll(String[] boardIds) {
-		return AdminDAO.deleteBoardAll(boardIds);
+	public boolean deleteBoardAll(String[] boardIds) {
+		return adminDAO.deleteBoardAll(boardIds);
 	} 
 	
-//	//삭제 메소드 강사님  deleteBoardAll
-//	public static boolean deleteBoardAll(String boardId) throws SQLException, NotExistException{
-////		NotExistException("삭제할 것이 없어요");
-//		return AdminDAO.deleteBoardAll(boardId);
-//	}
-	
 	//boardId로 검색하는 메소드
-	public static BoardDTO getBoard(String boardId) throws SQLException, NotExistException{
-		BoardDTO board = AdminDAO.getBoard(boardId);
+	public BoardDTO getBoard(String boardId) throws SQLException, NotExistException{
+		BoardDTO board = adminDAO.getBoard(boardId);
 		if(board == null){
 			throw new NotExistException("검색했는데, 관련 게시글이 존재하지않아요. ");
 		}
@@ -88,19 +63,40 @@ public class ReviewService {
 	}
 	
 	//게시글 카테고리 수정하는 메소드
-	public static boolean updateCategory(String boardId, String categoryId) throws SQLException, NotExistException{		
+	public boolean updateCategory(String boardId, String categoryId) throws SQLException, NotExistException{		
 //		notExistActivist(boardId);
-		boolean result = AdminDAO.updateCategory(boardId, categoryId);
+		boolean result = adminDAO.updateCategory(boardId, categoryId);
 		if(!result){
 			throw new NotExistException("카테고리 변경이 어렵네요.");
 		}
 		return result;
 	}
 	
-	public static UserDTO getUserForLogin(String id, String pw) throws NotExistException {
+	
+	public boolean addUser(UserDTO user) throws MessageException {
+		boolean result = false;
+		try{
+			result = userDAO.addUser(user);
+		}catch(SQLException s){
+			throw new MessageException("이미 존재하는 ID입니다 다시 시도 하세요");
+		}
+		return result;
+	}
+
+
+	public UserDTO getUser(String email) throws NotExistException {
+		UserDTO activist = userDAO.getUser(email);
+		if(activist == null){
+			throw new NotExistException("검색하는 유저가 없습니다.");
+		}
+		return activist;
+	}
+
+
+	public UserDTO getUserForLogin(String id, String pw) throws NotExistException {
 		UserDTO user = null;
 		try {
-			user = UserDAO.getUserForLogin(id,pw);
+			user = userDAO.getUserForLogin(id,pw);
 			if(user == null){
 				throw new NotExistException("ID를 확인해주세요.");
 			}
@@ -110,6 +106,55 @@ public class ReviewService {
 		return user;
 	}
 
+
+	public boolean deleteUser(String id, String pw) throws MessageException {
+		boolean result = false;
+		try{
+			result = userDAO.deleteUser(id,pw);
+		}catch(Exception s){
+			throw new MessageException("존재하는 않는 ID입니다 다시 시도 하세요");
+		}
+		return result;
+	}
+	
+
+	//게시글 추가
+		public boolean addBorad(BoardDTO board) throws MessageException{
+			boolean result = false;
+			try{
+				result = boardDAO.addBoard(board);
+			}catch(SQLException s){
+				throw new MessageException("sql error");
+			}
+			return result;
+		}
+		
+		//게시물 삭제
+		public boolean deleteBoard(String probonoId) throws SQLException, NotExistException{
+			return boardDAO.deleteBoard(probonoId);
+		}
+		
+		//게시물 상세보기
+		public BoardDTO getBoard(int boardId) throws SQLException{
+			return boardDAO.getBoard(boardId);
+		}
+		
+		//**게시물 전체 보기
+		public  List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
+			List<BoardDTO> boardlistAll = adminDAO.getBoardlistAll();
+			
+			if(boardlistAll == null){
+				throw new NotExistException("");
+			}
+			
+			return boardlistAll;
+		}
+
+		//게시글 수정
+		public boolean updateBoard(String boardId, String title, String content) throws SQLException,NotExistException{
+			return boardDAO.updateBoard(boardId, title, content);
+		}
+		
 
 	
 	

@@ -21,7 +21,7 @@ public class UserDAO {
 		return instance;
 	}
 
-	public static boolean addUser(UserDTO user) throws SQLException {
+	public boolean addUser(UserDTO user) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;
@@ -61,7 +61,7 @@ public class UserDAO {
 		return user;
 	}
 
-	public static UserDTO getUserForLogin(String id, String pw) {
+	public UserDTO getUserForLogin(String id, String pw) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		UserDTO user = null;
@@ -82,7 +82,7 @@ public class UserDAO {
 		return user;
 	}
 
-	public static boolean deleteUser(String id, String pw) {
+	public boolean deleteUser(String id, String pw) {
 		System.out.println("User DAO deleteUser====================");
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();

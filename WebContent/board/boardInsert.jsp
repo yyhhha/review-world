@@ -11,7 +11,7 @@
 </head>
 <body class="w3-theme-l5">
 
-<form action="${pageContext.request.contextPath}/reviewz?command=boardInsert" method="post">
+<form action="${pageContext.request.contextPath}/review?command=boardInsert" method="post">
 <div class="w3-container">
  	  <p contenteditable="true" style="font-size:30px"><b>제목</b></p>
  	  <h5><span class="w3-opacity">April 7, 2014</span></h5>
@@ -43,10 +43,10 @@
 <%-- 
 
 http://ip:port/project/board/boardinsert.jsp
-http://ip:port/project/reviewz
+http://ip:port/project/review
  --%>
 
-<%-- <form action="${pageContext.request.contextPath}/reviewz?command=boardInsert" method="post">
+<%-- <form action="${pageContext.request.contextPath}/review?command=boardInsert" method="post">
 	<div id="editor">
 	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px"> 
 		<div class="w3-col m7">

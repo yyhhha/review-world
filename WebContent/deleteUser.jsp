@@ -12,7 +12,7 @@
 <body>
 <h2>whogi Delete Form</h2>
     <div class="container">
-    	<form action="reviewy" method="post">
+    	<form action="review" method="post">
     	<input type="hidden" name="command" value="deleteUser">
       <label for="uid"><b>User Id</b></label>
       <input type="text" placeholder="Enter Username" name="uid" required>

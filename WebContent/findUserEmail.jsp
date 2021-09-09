@@ -19,7 +19,7 @@
 <h2>Find </h2>
 
     <div class="container">
-      <form action="${pageContext.request.contextPath}/reviewy" method="post">
+      <form action="${pageContext.request.contextPath}/review" method="post">
       <input type="hidden" name="command" value="FindByEmail">
       <label for="USER_EMAIL"><b>USER_EMAIL</b></label>
       <input type="text" placeholder="Enter USER_EMAIL" name="USER_EMAIL" required>

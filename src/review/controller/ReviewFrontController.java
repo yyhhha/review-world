@@ -46,7 +46,8 @@ public class ReviewFrontController extends HttpServlet {
 				commentlistAll(request, response);
 			} else if (command.equals("삭제")) {// 게시글 일괄 삭제
 				deleteBoardAll(request, response);
-
+			} else if (command.equals("멤버삭제")) {// 멤버삭제 일괄 삭제
+				deleteMemberAll(request, response);
 				// 회원가입 관련-------------------------
 			} else if (command.equals("FindByEmail")) {
 				FindByEmail(request, response);
@@ -156,17 +157,38 @@ public class ReviewFrontController extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	//선택한 멤버 삭제
+	private void deleteMemberAll(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		String[] memberIds = request.getParameterValues("del-mem");
+
+		for (int i = 0; i < memberIds.length; i++) {
+			System.out.println(memberIds[i]);
+		}
+		try {
+			boolean result = reviewService.deleteMemberAll(memberIds);
+			System.out.println(result);
+			if (result) {
+				url = "/admin/adminMemberlist.jsp";
+				memberlistAll(request, response);
+			} else {
+				request.setAttribute("errorMsg", "삭제 실패");
+			}
+
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
 	// 특정 게시글 일괄 삭제
 	private void deleteBoardAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		String[] boardIds = request.getParameterValues("del-id");
 
-//		System.out.println(request.getParameterValues("del-id"));
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		for (int i = 0; i < boardIds.length; i++) {
-			System.out.println(boardIds[i]);
-		}
 		try {
 			boolean result = reviewService.deleteBoardAll(boardIds);
 			System.out.println(result);
@@ -184,7 +206,7 @@ public class ReviewFrontController extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String url = "showErrorR.jsp";
 		UserDTO a;
 		try {
@@ -196,27 +218,23 @@ public class ReviewFrontController extends HttpServlet {
 
 				if (a.getUserType().equals("관리자")) {
 					// admin 페이지
-					System.out.println("관리자ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 					url = "adminMain.html";
 				} else if (a.getUserType().equals("일반")) {
 					// 일반회원 페이지
-					System.out.println("일반 사용자 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 					url = "user/userboardlist.jsp";
 				} else {
-					System.out.println("typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 					url = "showError.jsp";
 				}
 			} else {
 				session.setAttribute("errorMsg", "존재하지 않는 유저입니다.");
+				request.setAttribute("errorMsg", "존재하지 않는 유저입니다. 다시 시도하세요");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-//		System.out.println(url);
-//		response.sendRedirect(url);
+			request.getRequestDispatcher(url).forward(request, response);
 		}finally {
 		System.out.println(url);
 		response.sendRedirect(url);
-
 		}
 	}	
 		public void FindByEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -247,6 +265,8 @@ public class ReviewFrontController extends HttpServlet {
 					}
 				} catch (Exception s) {
 					session.setAttribute("errorMsg", s.getMessage());
+					request.setAttribute("errorMsg", s.getMessage());
+					request.getRequestDispatcher(url).forward(request, response);
 				}
 				response.sendRedirect(url);
 
@@ -307,7 +327,7 @@ public class ReviewFrontController extends HttpServlet {
 					session.setAttribute("email", email);
 					session.setAttribute("successMsg", "가입 완료");
 				} else {
-					session.setAttribute("errorMsg", "다시 시도하세요");
+					session.setAttribute("errorMsg", "Id혹은 닉네임이 중복입니다. 다시 시도해주세요");
 
 				}
 			} catch (Exception s) {

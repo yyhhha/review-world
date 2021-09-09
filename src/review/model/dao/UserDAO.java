@@ -83,10 +83,8 @@ public class UserDAO {
 	}
 
 	public boolean deleteUser(String id, String pw) {
-		System.out.println("User DAO deleteUser====================");
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
-		System.out.println("Start  deleteUser====================");
 		boolean result = false;
 		try {
 			RUser user =em.find(RUser.class, id);

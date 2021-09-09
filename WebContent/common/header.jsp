@@ -8,6 +8,6 @@
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
-		<span class="w3-bar-item w3-right">Logo</span>
+		<span class="w3-bar-item w3-right"> <i class= "fa fa-thumbs-o-up">후기적후기적: 세상 모든 후기 모음 사이트</i></span>
 	</div>
     

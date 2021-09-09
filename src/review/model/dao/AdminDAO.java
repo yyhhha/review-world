@@ -29,28 +29,38 @@ public class AdminDAO {
 	
 
 	// 모든 게시글 리스트 검색
-	@SuppressWarnings("unchecked")
 	public List<BoardDTO> getBoardlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RBoard> list = null;
 		List<BoardDTO> resultList = new ArrayList<>();
+		
 		try {
-			list = manager.createQuery("SELECT r FROM RBoard r").getResultList();
-			RCategory category = null;
+
+			list = manager.createNativeQuery("SELECT * FROM R_Board", RBoard.class).getResultList();
 			RUser user = null;
+			RCategory category = null;
 
 			for (RBoard board : list) {
-				category = board.getCategory();
 				user = board.getUserId();
+				category = board.getCategory();
 
-				resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
-						board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(),
-						user.getNickName(), board.getUserId().getUserId(), board.getCategory().getCategoryId()));
+				if (user == null) {
+					resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
+							board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(), "익명",
+							"익명", board.getCategory().getCategoryId()));
+				} else {
+					resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
+							board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(),
+							user.getNickName(), board.getUserId().getUserId(), board.getCategory().getCategoryId()));
+				}
 			}
-
+			System.out.println(resultList.size());
 		} catch (Exception e) {
+			e.printStackTrace();
+
 		} finally {
-//			manager.close();
+			manager.close();
+			manager = null;
 		}
 		return resultList;
 	}
@@ -164,6 +174,31 @@ public class AdminDAO {
 
 		return result;
 	}
-
 	
+	public boolean deleteMemberAll(String[] memberIds) {
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		boolean result = false;
+		try {
+			String temp = "";
+			for (int i = 0; i < memberIds.length; i++) {
+				if (i == memberIds.length - 1) {
+					temp += "'"+memberIds[i]+ "'";
+				} else {
+					temp += "'"+memberIds[i] + " ',";
+				}
+			}
+			System.out.println(temp);
+			em.createNativeQuery("DELETE FROM R_USER WHERE USER_ID in (" + temp + ")", RBoard.class).executeUpdate();
+			em.getTransaction().commit();
+			result = true;
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+			em = null;
+		}
+
+		return result;
+	}
 }

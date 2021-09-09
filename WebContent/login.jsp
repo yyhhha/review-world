@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+    <!-- http://localhost/step12_reviewSite/login.jsp -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
     </div>
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <button type="button" onclick="location.href='deleteUser.jsp'" class="cancelbtn">Delete</button>
       <span class="psw">Forgot <a href="findUserEmail.jsp">password?</a></span>
     </div>
   </form>

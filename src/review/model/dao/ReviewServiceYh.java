@@ -23,17 +23,6 @@ import review.model.dto.UserDTO;
 	private static UserDAO userDAO = UserDAO.getInstance();
 	
 	
-//	public boolean addBorad(String userId) throws MessageException{
-//		boolean result = false;
-//		try{
-//			result = boardDAO.addBoard(userId);
-//		}catch(SQLException s){
-//			throw new MessageException("");
-//		}
-//		return result;
-//	}
-//	
-	
 	public static List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
 		List<BoardDTO> boardlistAll = AdminDAO.getBoardlistAll();
 		
@@ -60,7 +49,7 @@ import review.model.dto.UserDTO;
 	public static UserDTO getUser(String email) throws NotExistException {
 		UserDTO activist = userDAO.getUser(email);
 		if(activist == null){
-			throw new NotExistException("검색하는 재능 기부자가 미 존재합니다.");
+			throw new NotExistException("검색하는 유저가 없습니다.");
 		}
 		return activist;
 	}
@@ -77,6 +66,17 @@ import review.model.dto.UserDTO;
 			throw new NotExistException("PW를 확인해주세요.");
 		}
 		return user;
+	}
+
+
+	public static boolean deleteUser(String id, String pw) throws MessageException {
+		boolean result = false;
+		try{
+			result = UserDAO.deleteUser(id,pw);
+		}catch(Exception s){
+			throw new MessageException("존재하는 않는 ID입니다 다시 시도 하세요");
+		}
+		return result;
 	}
 	
 }

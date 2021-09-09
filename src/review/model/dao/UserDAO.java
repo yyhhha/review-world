@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.persistence.EntityManager;
 
+import review.exception.MessageException;
 import review.exception.NotExistException;
 import review.model.dto.UserDTO;
 import review.model.entity.RUser;
@@ -55,6 +56,7 @@ public class UserDAO {
 			em.getTransaction().rollback();
 		} finally {
 			em.close();
+			em = null;
 		}
 		return user;
 	}
@@ -75,9 +77,35 @@ public class UserDAO {
 			em.getTransaction().rollback();
 		} finally {
 			em.close();
+			em = null;
 		}
 		return user;
 	}
-	
-	
+
+	public static boolean deleteUser(String id, String pw) {
+		System.out.println("User DAO deleteUser====================");
+		EntityManager em = DBUtil.getEntityManager();
+		em.getTransaction().begin();
+		System.out.println("Start  deleteUser====================");
+		boolean result = false;
+		try {
+			RUser user =em.find(RUser.class, id);
+			
+			if(user.getUserPw().equals(pw)) {
+				em.remove(user);
+				result = true;
+				em.getTransaction().commit();
+			}else {
+				throw new MessageException("pw가 일치하지 않습니다. 다시 시도 하세요");
+			}
+			
+		}catch (Exception e) {
+			em.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			em.close();
+			em = null;
+		}
+		return result;
+	}
 }

@@ -109,7 +109,7 @@ public class AdminDAO {
 	}
 
 	// 글id로 해당 글에 대한 모든 값 반환
-	public BoardDTO getBoard(String boardId) throws SQLException {
+	public BoardDTO getBoard(int boardId) throws SQLException {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		BoardDTO board = null;
@@ -121,9 +121,11 @@ public class AdminDAO {
 					b.getUserId().getUserId(), b.getCategory().getCategoryId());
 		} catch (Exception e) {
 			em.getTransaction().rollback();
+			e.printStackTrace();
 		} finally {
 			em.close();
 		}
+		
 		return board;
 	}
 

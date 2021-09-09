@@ -47,16 +47,25 @@ public class BoardDAO {
 	}
 	
 	//게시물 삭제
-	public boolean deleteBoard(String boardId) {
+	public boolean deleteBoard(int boardId) {
+		System.out.println("boardid"+boardId);
+		System.out.println("DAO test");
 		EntityManager em =DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		boolean result = false;
+		System.out.println("DAO test2");
 		
 		try {
-			em.remove(em.find(RBoard.class, boardId));
+			System.out.println("DAO try test");
+			RBoard board = em.find(RBoard.class, boardId);
+			System.out.println("test=============");
+			em.remove(board);
+//			em.remove(em.find(RBoard.class, boardId));
 			em.getTransaction().commit();
+			System.out.println("DAO try test2");
 			result = true;
 		} catch (Exception e) {
+			System.out.println("DAO try test3");
 			em.getTransaction().rollback();
 		} finally {
 			em.close();

@@ -18,21 +18,18 @@ html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
 </style>
-
 <body class="w3-light-grey">
 
 </body>
 </head>
 
 <div>
-<jsp:include page="../common/header.jsp" />
+	<jsp:include page="../common/header.jsp" />
 </div>
 
 <nav>
 	<jsp:include page="../common/nav.jsp" />
 </nav>
-
-<!-- ***********************************************************  -->
 
 <div style="padding: 20px 200px 20px 315px" class="w3-container">
 	<h5>게시글 목록</h5>
@@ -45,52 +42,32 @@ html, body, h1, h2, h3, h4, h5 {
 			<td>추천수</td>
 			<td>조회수</td>
 			<td>작성일</td>
-			<td>선택</td>
 		</tr>
 
-
-		<form action="#" method="post">
-			<c:forEach items="${requestScope.boardlistAllUser}" var="data">
-				<tr>
-					<td>${data.categoryName}</td>
-					<td width="500">${data.title}</td>
-					<td>${data.nickname}</td>
-					<td>${data.likes}</td>
-					<td>${data.views}</td>
-					<td>${data.boardDate}</td>
-					<td><input type="checkbox" name="del-id"
-						value="${data.boardId}"></td>
-				</tr>
-				<input type="hidden" name="boardId" value="${data.boardId}">
-			</c:forEach>
+		<c:forEach items="${requestScope.boardlistAllUser}" var="data">
+			<input type="submit" name="boardId" value="${data.boardId}">
+			<tr>
+				<td>${data.categoryName}</td>
+				<td><a
+					href="${pageContext.request.contextPath}/review?command=boardDetail&boardId=${data.boardId}">${data.title}</a></td>
+				<td>${data.nickname}</td>
+				<td>${data.likes}</td>
+				<td>${data.views}</td>
+				<td>${data.boardDate}</td>
+			</tr>
+		</c:forEach>
 	</table>
 
-
-
 	<div align="right">
-		<button type="submit" class="w3-button w3-dark-grey" name="command"
-			value="삭제">
-			삭제하기 &nbsp;<i class="fa fa-trash-o"></i>
-
-		</button>
-
+		<form action="${pageContext.request.contextPath}/board/boardwrite.jsp">
+			<button type="submit" class="w3-button w3-dark-grey">글쓰기</button>
+		</form>
 	</div>
-	</form>
-	<br> <a href="admin/admincategoryupdate.jsp"><button
-			type="submit" class="w3-button w3-dark-grey">
-			카테고리 수정하러가기 &nbsp;<i class="fa fa-pencil"></i>
-		</button></a>
-
-
 
 </div>
-
-<!-- ************************************************ -->
 
 <footer>
 	<jsp:include page="../common/footer.jsp" />
 </footer>
-
-
 
 </html>

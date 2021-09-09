@@ -31,14 +31,24 @@ html, body, h1, h2, h3, h4, h5 {
 		style="z-index: 3; width: 300px;" id="mySidebar">
 		<br>
 		<div class="w3-container w3-row">
+<<<<<<< HEAD:WebContent/board/test.jsp
 			<div class="w3-col s4">
 				<img src="images/avatar2.png" class="w3-circle w3-margin-right"
 					style="width: 46px">
 			</div>
+			<div class="w3-col s8 w3-bar">
+				<span> 반가워요! <br> 
+				<a href="login.jsp"><strong>로그인 하시고 모든 종류의 후기를 보세요!</strong></a></span>
+				<a class="w3-bar-item w3-button"><i	class="fa fa-sign-in w3-xlarge"></i></a>
+​
+			</div>
+=======
+		
 				<a href="login.jsp">
 				<img src="./images/로그인.png" alt="welcomepic3" width="250" height="150"> 
 				</a>
 		
+>>>>>>> main:WebContent/index.html
 		</div>
 		<hr>
 		<div class="w3-container">
@@ -65,13 +75,27 @@ html, body, h1, h2, h3, h4, h5 {
 	<div class="w3-overlay w3-hide-large w3-animate-opacity"
 		onclick="w3_close()" style="cursor: pointer" title="close side menu"
 		id="myOverlay"></div>
+<<<<<<< HEAD:WebContent/board/test.jsp
 ​
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 ​
+		<!-- Header -->
+​
+		<header class="w3-container" style="padding-top: 22px">
+			<h5>
+				<b><i class="fa fa-dashboard"></i> 로그인하셔야 볼 수 있습니다.</b>
+			</h5>
+		</header>
+​
+​
+=======
+
 <!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 
+
+>>>>>>> main:WebContent/index.html
 		<br> <br> <br>
 		<div class="w3-container" align="center">
 			<a href="login.jsp"><button class="w3-button w3-black">
@@ -84,6 +108,11 @@ html, body, h1, h2, h3, h4, h5 {
 					회원가입 하기 &nbsp;<i class="fa fa-arrow-right"></i>
 				</button></a>
 		</div>
+<<<<<<< HEAD:WebContent/board/test.jsp
+​
+​
+=======
+
 
 			<div class="w3-container" align="center">
 				<br> <br> <img src="./images/tototo.jpg"
@@ -91,6 +120,14 @@ html, body, h1, h2, h3, h4, h5 {
 
 			</div>
 
+
+
+
+
+
+
+
+>>>>>>> main:WebContent/index.html
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-16 w3-light-grey">
 			<h4>(주)후기적후기적컴퍼니</h4>

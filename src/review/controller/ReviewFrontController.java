@@ -189,9 +189,6 @@ public class ReviewFrontController extends HttpServlet {
 		String url = "showError.jsp";
 		String[] boardIds = request.getParameterValues("del-id");
 
-//		for (int i = 0; i < boardIds.length; i++) {
-//			System.out.println(boardIds[i]);
-//		}
 		try {
 			boolean result = reviewService.deleteBoardAll(boardIds);
 			System.out.println(result);
@@ -209,7 +206,7 @@ public class ReviewFrontController extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
-	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String url = "showErrorR.jsp";
 		UserDTO a;
 		try {
@@ -221,27 +218,23 @@ public class ReviewFrontController extends HttpServlet {
 
 				if (a.getUserType().equals("관리자")) {
 					// admin 페이지
-					System.out.println("관리자ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 					url = "adminMain.html";
 				} else if (a.getUserType().equals("일반")) {
 					// 일반회원 페이지
-					System.out.println("일반 사용자 ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 					url = "user/userboardlist.jsp";
 				} else {
-					System.out.println("typeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 					url = "showError.jsp";
 				}
 			} else {
 				session.setAttribute("errorMsg", "존재하지 않는 유저입니다.");
+				request.setAttribute("errorMsg", "존재하지 않는 유저입니다. 다시 시도하세요");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-//		System.out.println(url);
-//		response.sendRedirect(url);
+			request.getRequestDispatcher(url).forward(request, response);
 		}finally {
 		System.out.println(url);
 		response.sendRedirect(url);
-
 		}
 	}	
 		public void FindByEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -272,6 +265,8 @@ public class ReviewFrontController extends HttpServlet {
 					}
 				} catch (Exception s) {
 					session.setAttribute("errorMsg", s.getMessage());
+					request.setAttribute("errorMsg", s.getMessage());
+					request.getRequestDispatcher(url).forward(request, response);
 				}
 				response.sendRedirect(url);
 
@@ -332,7 +327,7 @@ public class ReviewFrontController extends HttpServlet {
 					session.setAttribute("email", email);
 					session.setAttribute("successMsg", "가입 완료");
 				} else {
-					session.setAttribute("errorMsg", "다시 시도하세요");
+					session.setAttribute("errorMsg", "Id혹은 닉네임이 중복입니다. 다시 시도해주세요");
 
 				}
 			} catch (Exception s) {

@@ -29,6 +29,7 @@ public class ReviewFrontControllerSilver extends HttpServlet {
 				categotyUpdateReq(request, response);
 			}else if(command.equals("categotyUpdate")){//재능 기부자 정보 수정
 				categotyUpdate(request, response);
+			
 			}else {
 				
 			}
@@ -162,4 +163,59 @@ public class ReviewFrontControllerSilver extends HttpServlet {
 			}
 		}
 		
+		
+		
+/*	// 강사님 delete메소드..
+//	private void deleteBoardAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String url = "showError.jsp";
+//		try {
+//			boolean result = ReviewService.deleteBoardAll(request.getParameter("boardId"));
+//			
+//			if(result) {
+//				request.setAttribute("삭제", ReviewService.getBoardlistAll());
+//				url = "/admin/adminBoardlist.jsp";
+//			}else {
+//				request.setAttribute("errorMsg", "삭제 실패");
+//			}
+//		}catch(Exception s){
+//			request.setAttribute("errorMsg", s.getMessage());
+//			s.printStackTrace();
+//		}
+//		request.getRequestDispatcher(url).forward(request, response);
+//	}
+
+//		//■ 어드민 카테고리 수정 요구
+//		public void categotyUpdateReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//			String url = "showError.jsp";
+//			try {
+//				request.setAttribute("board", ReviewService.getBoard(request.getParameter("BoardId")));
+//				url = "/admin/adminBoardlist.jsp";
+//			}catch(Exception s){
+//				request.setAttribute("errorMsg", s.getMessage());
+//				s.printStackTrace();
+//			}
+//			request.getRequestDispatcher(url).forward(request, response);
+//		}
+
+		//■ 어드민 카테고리 수정  
+		public void categotyUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			
+			try {
+				if(ReviewService.updateCategory(request.getParameter("BoardId"), request.getParameter("categoryId"))) {
+					request.setAttribute("board", ReviewService.getBoard(request.getParameter("BoardId")));
+					url = "admin/adminBoardlist.jsp";
+				}else {
+					request.setAttribute("errorMsg", "저장 실패");
+				}
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+				s.printStackTrace();
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+
+ * 
+ * 
+ */
 	}

@@ -23,16 +23,16 @@ import review.model.dto.UserDTO;
 	private static UserDAO userDAO = UserDAO.getInstance();
 	
 	
-	public boolean addBorad(String userId) throws MessageException{
-		boolean result = false;
-		try{
-			result = boardDAO.addBoard(userId);
-		}catch(SQLException s){
-			throw new MessageException("");
-		}
-		return result;
-	}
-	
+//	public boolean addBorad(String userId) throws MessageException{
+//		boolean result = false;
+//		try{
+//			result = boardDAO.addBoard(userId);
+//		}catch(SQLException s){
+//			throw new MessageException("");
+//		}
+//		return result;
+//	}
+//	
 	
 	public static List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
 		List<BoardDTO> boardlistAll = AdminDAO.getBoardlistAll();

@@ -59,7 +59,7 @@ public class UserDAO {
 		return user;
 	}
 
-	public UserDTO getUserForLogin(String id, String pw) {
+	public static UserDTO getUserForLogin(String id, String pw) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();
 		UserDTO user = null;

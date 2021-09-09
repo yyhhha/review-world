@@ -75,7 +75,7 @@ public class ReviewFrontControllerZyan extends HttpServlet {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("boardlistAll", ReviewService.getBoardlistAll());
-			url = "/admin/adminBoardlist.jsp";
+			url = "/user/userboardlist.jsp";
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 			s.printStackTrace();

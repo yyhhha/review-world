@@ -11,7 +11,7 @@
 <body>
 <h2>whogi Login Form</h2>
     <div class="container">
-    	<form action="reviewy" method="post">
+    	<form action="review" method="post">
     	<input type="hidden" name="command" value="userLogin">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>

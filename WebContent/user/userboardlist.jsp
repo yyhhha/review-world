@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>회원목록 검색</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,33 +13,28 @@
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../adminCommon/main.css">
-
 <style>
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
-
-a {
-	text-decoration: none
-}
 </style>
 
 <body class="w3-light-grey">
+
+</body>
 </head>
 
 <div>
-	<jsp:include page="../adminCommon/header.jsp" />
+<jsp:include page="../common/header.jsp" />
 </div>
 
 <nav>
-	<jsp:include page="../adminCommon/nav.jsp" />
+	<jsp:include page="../common/nav.jsp" />
 </nav>
 
-<!-- ************************************************ -->
+<!-- ***********************************************************  -->
 
-
-<div style="padding: 20px 100px 20px 215px" class="w3-container">
+<div style="padding: 20px 200px 20px 315px" class="w3-container">
 	<h5>게시글 목록</h5>
 	<table
 		class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
@@ -50,13 +45,12 @@ a {
 			<td>추천수</td>
 			<td>조회수</td>
 			<td>작성일</td>
-			<td>삭제</td>
+			<td>선택</td>
 		</tr>
 
 
-		<form action="review?command=삭제" method="post">
-			<input type="hidden" name="command" value="categotyUpdate">
-			<c:forEach items="${requestScope.boardlistAllAdmin}" var="data">
+		<form action="#" method="post">
+			<c:forEach items="${requestScope.boardlistAllUser}" var="data">
 				<tr>
 					<td>${data.categoryName}</td>
 					<td width="500">${data.title}</td>
@@ -91,21 +85,12 @@ a {
 
 </div>
 
-
-
-
-
-
-
-
 <!-- ************************************************ -->
 
 <footer>
-	<jsp:include page="../adminCommon/footer.jsp" />
+	<jsp:include page="../common/footer.jsp" />
 </footer>
 
 
-<body>
 
-</body>
 </html>

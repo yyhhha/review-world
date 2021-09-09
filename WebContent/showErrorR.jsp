@@ -15,7 +15,7 @@
 
 	<center>
 		<h3>${sessionScope.errorMsg}</h3>
-			
+		<h3>${requestScope.errorMsg}</h3>	
 		<br><br><br>
 		<a href="login.jsp">메인 화면으로 이동하기</a>
 	</center>

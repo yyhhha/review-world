@@ -29,7 +29,6 @@ public class AdminDAO {
 	
 
 	// 모든 게시글 리스트 검색
-	@SuppressWarnings("unchecked")
 	public List<BoardDTO> getBoardlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RBoard> list = null;
@@ -38,19 +37,31 @@ public class AdminDAO {
 			list = manager.createQuery("SELECT r FROM RBoard r").getResultList();
 			RCategory category = null;
 			RUser user = null;
-
+			
+			
+			
 			for (RBoard board : list) {
 				category = board.getCategory();
 				user = board.getUserId();
-
-				resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
-						board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(),
-						user.getNickName(), board.getUserId().getUserId(), board.getCategory().getCategoryId()));
+				
+				if(user == null) {
+					resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
+							board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(),
+							null, null, board.getCategory().getCategoryId()));
+				}else {
+					resultList.add(new BoardDTO(board.getBoardId(), board.getTitle(), board.getContent(),
+							board.getBoardDate(), board.getViews(), board.getLikes(), category.getCategoryName(),
+							user.getNickName(), board.getUserId().getUserId(), board.getCategory().getCategoryId()));
+				}
+				
 			}
-
+			System.out.println(resultList.size());
+			System.out.println("==========board==========");
 		} catch (Exception e) {
+			System.out.println("======================catch");
 		} finally {
 //			manager.close();
+//			manager = null;
 		}
 		return resultList;
 	}

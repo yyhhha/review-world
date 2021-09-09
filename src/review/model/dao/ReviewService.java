@@ -1,6 +1,7 @@
 package review.model.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import review.exception.MessageException;
@@ -8,6 +9,7 @@ import review.exception.NotExistException;
 import review.model.dto.BoardDTO;
 import review.model.dto.CommentDTO;
 import review.model.dto.UserDTO;
+import review.model.entity.RBoard;
 
 public class ReviewService {
 	private ReviewService() {}
@@ -149,6 +151,16 @@ public class ReviewService {
 			
 			return boardlistAll;
 		}
+		
+//		public  List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{
+//			List<BoardDTO> boardlistAll = adminDAO.getBoardlistAll();
+//			
+//			if(boardlistAll == null){
+//				throw new NotExistException("");
+//			}
+//			
+//			return boardlistAll;
+//		}
 
 		//게시글 수정
 		public boolean updateBoard(String boardId, String title, String content) throws SQLException,NotExistException{

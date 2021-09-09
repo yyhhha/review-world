@@ -11,9 +11,7 @@
 				style="width: 46px">
 		</div>
 		<div class="w3-col s8 w3-bar">
-				<span>반가워요!<strong>${sessionScope.user.nickName}</strong></span><br> <a href="#"
-					class="w3-bar-item w3-button"><i class="fa fa-user"></i></a> <a
-					href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+				<span>반가워요!<br><strong>${sessionScope.user.nickName}</strong>님 환영해요!</span><br>
 
 		</div>
 	</div>
@@ -25,21 +23,15 @@
 		<a href="#"
 			class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
 			onclick="w3_close()" title="close menu"><i
-			class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> <a href="${pageContext.request.contextPath}/review?command=boardlistAllUser"
-			class="w3-bar-item w3-button w3-padding w3-blue"><i
-			class="fa fa-users fa-fw"></i>&nbsp; 전체 게시글</a> <a href="${pageContext.request.contextPath}/review?command=boardlistAllUser"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-eye fa-fw"></i>&nbsp; 자유 후기</a> <a href="${pageContext.request.contextPath}/review?command=boardlistAllUser"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-users fa-fw"></i>&nbsp; 영화 후기</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-bullseye fa-fw"></i>&nbsp; 맛집 후기</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-diamond fa-fw"></i>&nbsp; 게임 후기</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-bell fa-fw"></i>&nbsp; IT/테크 후기</a> <a href="#"
-			class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-cog fa-fw"></i>&nbsp; 로그아웃하기</a><br> <br>
+			class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> 
+			<a href="${pageContext.request.contextPath}/review?command=boardlistAllUser" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>&nbsp; 전체 게시글</a> <a href="${pageContext.request.contextPath}/review?command=boardlistAllUser" class="w3-bar-item w3-button w3-padding"><i	class="fa fa-eye fa-fw"></i>&nbsp; 자유 후기</a> 
+			<a href="${pageContext.request.contextPath}/review?command=boardlistAllUser"class="w3-bar-item w3-button w3-padding"><i	class="fa fa-users fa-fw"></i>&nbsp; 영화 후기</a> 
+			<a href="#" class="w3-bar-item w3-button w3-padding"><i	class="fa fa-beer fa-fw"></i>&nbsp; 맛집 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i class="fa fa-gamepad fa-fw"></i>&nbsp; 게임 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>&nbsp; IT/테크 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i	class="fa fa-cog fa-fw"></i>&nbsp; 로그아웃하기</a>
+			
+			<br> <br>
 	</div>
 </nav>
 
@@ -56,57 +48,12 @@
 
 	<header class="w3-container" style="padding-top: 22px">
 		<h5>
-			<b><i class="fa fa-dashboard"></i>아무 후기나 구경해라</b>
+			<b><i class="fa fa-dashboard"></i>후기 구경하세요! </b>
 		</h5>
 	</header>
 
-	<div class="w3-row-padding w3-margin-bottom">
-		<div class="w3-quarter">
-			<div class="w3-container w3-red w3-padding-16">
-				<div class="w3-left">
-					<i class="fa fa-comment w3-xxxlarge"></i>
-				</div>
-				<div class="w3-right">
-					<h3>?</h3>
-				</div>
-				<div class="w3-clear"></div>
-				<h4>인기글</h4>
-			</div>
-		</div>
-		<div class="w3-quarter">
-			<div class="w3-container w3-blue w3-padding-16">
-				<div class="w3-left">
-					<i class="fa fa-eye w3-xxxlarge"></i>
-				</div>
-				<div class="w3-right">
-					<h3>?</h3>
-				</div>
-				<div class="w3-clear"></div>
-				<h4>전체 게시글</h4>
-			</div>
-		</div>
-		<div class="w3-quarter">
-			<div class="w3-container w3-teal w3-padding-16">
-				<div class="w3-left">
-					<i class="fa fa-share-alt w3-xxxlarge"></i>
-				</div>
-				<div class="w3-right">
-					<h3>?</h3>
-				</div>
-				<div class="w3-clear"></div>
-				<h4>맛집 후기</h4>
-			</div>
-		</div>
-		<div class="w3-quarter">
-			<div class="w3-container w3-orange w3-text-white w3-padding-16">
-				<div class="w3-left">
-					<i class="fa fa-users w3-xxxlarge"></i>
-				</div>
-				<div class="w3-right">
-					<h3>?</h3>
-				</div>
-				<div class="w3-clear"></div>
-				<h4>영화 후기</h4>
-			</div>
-		</div>
+	<div class="w3-container" align="left">
+		<img src="./images/event.png"
+			alt="welcomepic" width="1000" height="205"> <br> <br>
+
 	</div>

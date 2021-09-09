@@ -46,7 +46,8 @@ public class ReviewFrontController extends HttpServlet {
 				commentlistAll(request, response);
 			} else if (command.equals("삭제")) {// 게시글 일괄 삭제
 				deleteBoardAll(request, response);
-
+			} else if (command.equals("멤버삭제")) {// 멤버삭제 일괄 삭제
+				deleteMemberAll(request, response);
 				// 회원가입 관련-------------------------
 			} else if (command.equals("FindByEmail")) {
 				FindByEmail(request, response);
@@ -156,17 +157,41 @@ public class ReviewFrontController extends HttpServlet {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
+	//선택한 멤버 삭제
+	private void deleteMemberAll(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String url = "showError.jsp";
+		String[] memberIds = request.getParameterValues("del-mem");
+
+		for (int i = 0; i < memberIds.length; i++) {
+			System.out.println(memberIds[i]);
+		}
+		try {
+			boolean result = reviewService.deleteMemberAll(memberIds);
+			System.out.println(result);
+			if (result) {
+				url = "/admin/adminMemberlist.jsp";
+				memberlistAll(request, response);
+			} else {
+				request.setAttribute("errorMsg", "삭제 실패");
+			}
+
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
+			s.printStackTrace();
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
 	// 특정 게시글 일괄 삭제
 	private void deleteBoardAll(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "showError.jsp";
 		String[] boardIds = request.getParameterValues("del-id");
 
-//		System.out.println(request.getParameterValues("del-id"));
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		for (int i = 0; i < boardIds.length; i++) {
-			System.out.println(boardIds[i]);
-		}
+//		for (int i = 0; i < boardIds.length; i++) {
+//			System.out.println(boardIds[i]);
+//		}
 		try {
 			boolean result = reviewService.deleteBoardAll(boardIds);
 			System.out.println(result);

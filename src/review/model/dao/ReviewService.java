@@ -53,6 +53,12 @@ public class ReviewService {
 		return adminDAO.deleteBoardAll(boardIds);
 	} 
 	
+	
+	//어드민 멤버 삭제 메소드 배열.. deleteBoardAll
+	public boolean deleteMemberAll(String[] memberIds) {
+		return adminDAO.deleteMemberAll(memberIds);
+	} 
+	
 	//boardId로 검색하는 메소드
 	public BoardDTO getBoard(String boardId) throws SQLException, NotExistException{
 		BoardDTO board = adminDAO.getBoard(boardId);

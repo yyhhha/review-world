@@ -21,15 +21,15 @@ public class ReviewServiceSilver {
 	private static UserTypeDAO userTypeDAO = UserTypeDAO.getInstance();
 	private static CommentDAO commentDAO = CommentDAO.getInstance();
 	
-	public boolean addBorad(String userId) throws MessageException{
-		boolean result = false;
-		try{
-			result = boardDAO.addBoard(userId);
-		}catch(SQLException s){
-			throw new MessageException("");
-		}
-		return result;
-	}
+//	public boolean addBorad(String userId) throws MessageException{
+//		boolean result = false;
+//		try{
+//			result = boardDAO.addBoard(userId);
+//		}catch(SQLException s){
+//			throw new MessageException("");
+//		}
+//		return result;
+//	}
 	
 	
 	public static List<BoardDTO> getBoardlistAll() throws SQLException,NotExistException{

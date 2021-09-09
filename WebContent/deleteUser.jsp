@@ -10,22 +10,19 @@
 <title>login</title>
 </head>
 <body>
-<h2>whogi Login Form</h2>
+<h2>whogi Delete Form</h2>
     <div class="container">
     	<form action="reviewy" method="post">
-    	<input type="hidden" name="command" value="userLogin">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+    	<input type="hidden" name="command" value="deleteUser">
+      <label for="uid"><b>User Id</b></label>
+      <input type="text" placeholder="Enter Username" name="uid" required>
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
-      <button type="submit">Login</button>
+      <button type="submit">Delete User</button>
       </form>
-      <button type="button" onclick="location.href='signin.jsp'">sign in</button>
     </div>
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <button type="button" onclick="location.href='deleteUser.jsp'" class="cancelbtn">Delete</button>
-      <span class="psw">Forgot <a href="findUserEmail.jsp">password?</a></span>
+       <button type="button" onclick="location.href='login.jsp'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>

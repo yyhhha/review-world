@@ -13,10 +13,10 @@
 
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
 
-			<property name="javax.persistence.jdbc.user" value="ora01" />
+			<property name="javax.persistence.jdbc.user" value="SCOTT" />
 
 			<property name="javax.persistence.jdbc.password"
-				value="oracle_4U" />
+				value="TIGER" />
 
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.OracleDialect" />

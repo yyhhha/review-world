@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<h2>whogi Login Form</h2>
+<h2>whogi Sign up Form</h2>
     <div class="container">
 	    <form action="review" method="post">
 		<input type="hidden" name="command" value="userInsert">
@@ -22,7 +22,7 @@
 	      <label for="email"><b>e-mail</b></label>
 	      <input type="text" placeholder="Enter Your EMAIL" name="email" required>
 	      
-	      <button type="submit">sign in</button>
+	      <button type="submit">sign up</button>
 	     </form>
     </div>
     <div class="container" style="background-color:#f1f1f1">

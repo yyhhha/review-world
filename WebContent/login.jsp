@@ -20,7 +20,7 @@
       <input type="password" placeholder="Enter Password" name="psw" required>
       <button type="submit">Login</button>
       </form>
-      <button type="button" onclick="location.href='signin.jsp'">sign in</button>
+      <button type="button" onclick="location.href='signin.jsp'">sign up</button>
     </div>
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>

@@ -32,14 +32,6 @@ private static EntityManagerFactory emf;
 	private static Properties sql = new Properties();
 	
 	
-	static {
-		try {
-			dbinfo.load(new FileInputStream("db.properties"));
-			sql.load(new FileInputStream("buildingsql.properties"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public static Properties getSql() {
 		return sql;

@@ -48,11 +48,15 @@
 				<div class="w3-justify">
 					<p style="margin: 70px 70px 70px 100px">
 						${requestScope.board.content}</p>
-					<p class="w3-center">
-						<button class="w3-button w3-padding-large w3-white w3-border"
-							onclick="${pageContext.request.contextPath}/review?command=boardlistAllUser'">
-							<b>list &raquo;</b>
-						</button>
+			
+				<form action="${pageContext.request.contextPath}/review">
+               <p class="w3-center">
+                  <button class="w3-button w3-padding-large w3-white w3-border"
+								type="submit"> 
+                     <b>list &raquo;</b>
+                  </button>
+                  <input type="hidden" name="command" value="boardlistAllUser">
+               </form>
 					<%
 						if (id.equals(bId)) {
 					%>

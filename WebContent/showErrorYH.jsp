@@ -14,9 +14,13 @@
 <br><br><br>
 
 	<center>
-		<%-- <h3>${requestScope.errorMsg}</h3>--%>
 		 <h3>${sessionScope.errorMsg}</h3> 
-			
+		 <div class="w3-container" align="center">
+			<br>
+			<br> <img src="./images/error.png" alt="sorry"
+				width="1071" height="803"> <br>
+			<br>
+		</div>
 		<br><br><br>
 		<a href="login.jsp">메인 화면으로 이동하기</a>
 	</center>

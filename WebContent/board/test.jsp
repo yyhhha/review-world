@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <title>후기적후기적</title>
-<link rel="shortcut icon" href="../image/thumbicon.ico">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,7 +22,7 @@ html, body, h1, h2, h3, h4, h5 {
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
-		<span class="w3-bar-item w3-right"> <i class= "fa fa-thumbs-o-up">후기적후기적: 세상 모든 후기 모음 사이트</i></span>
+		<span class="w3-bar-item w3-right">Logo</span>
 	</div>
 ​
 	<!-- Sidebar/menu -->
@@ -31,7 +30,6 @@ html, body, h1, h2, h3, h4, h5 {
 		style="z-index: 3; width: 300px;" id="mySidebar">
 		<br>
 		<div class="w3-container w3-row">
-<<<<<<< HEAD:WebContent/board/test.jsp
 			<div class="w3-col s4">
 				<img src="images/avatar2.png" class="w3-circle w3-margin-right"
 					style="width: 46px">
@@ -42,30 +40,23 @@ html, body, h1, h2, h3, h4, h5 {
 				<a class="w3-bar-item w3-button"><i	class="fa fa-sign-in w3-xlarge"></i></a>
 ​
 			</div>
-=======
-		
-				<a href="login.jsp">
-				<img src="./images/로그인.png" alt="welcomepic3" width="250" height="150"> 
-				</a>
-		
->>>>>>> main:WebContent/index.html
 		</div>
 		<hr>
 		<div class="w3-container">
-			<h5><b>후기적 후기적 메뉴</b></h5>
+			<h5>후기적 후기적 메뉴</h5>
 		</div>
 		<div class="w3-bar-block">
 			<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu">
 			<i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> 
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;" class="w3-bar-item w3-button w3-padding w3-blue">
+			<a href="review?command=boardlistAllUser" class="w3-bar-item w3-button w3-padding w3-blue">
 			<i class="fa fa-users fa-fw"></i>&nbsp; 전체 게시글</a> 
 			
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>&nbsp; 자유 후기</a> 
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; 영화 후기</a> 
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;"	class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>&nbsp; 맛집 후기</a>
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp; 게임 후기</a> 
-			<a href="void(0);" onclick="alert('로그인 유저에게만 공개된 게시판 입니다.');return false;"	class="w3-bar-item w3-button w3-padding"><i	class="fa fa-bell fa-fw"></i>&nbsp; IT/테크 후기</a> 
-			<a href="login.jsp"	class="w3-bar-item w3-button w3-padding"><i	class="fa fa-cog fa-fw"></i>&nbsp; 로그아웃하기</a>
+			<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>&nbsp; 자유 후기</a> 
+			<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; 영화 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>&nbsp; 맛집 후기</a>
+			<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>&nbsp; 게임 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i	class="fa fa-bell fa-fw"></i>&nbsp; IT/테크 후기</a> 
+			<a href="#"	class="w3-bar-item w3-button w3-padding"><i	class="fa fa-cog fa-fw"></i>&nbsp; 로그아웃하기</a>
 			<br><br>
 		</div>
 	</nav>
@@ -75,7 +66,6 @@ html, body, h1, h2, h3, h4, h5 {
 	<div class="w3-overlay w3-hide-large w3-animate-opacity"
 		onclick="w3_close()" style="cursor: pointer" title="close side menu"
 		id="myOverlay"></div>
-<<<<<<< HEAD:WebContent/board/test.jsp
 ​
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
@@ -89,13 +79,6 @@ html, body, h1, h2, h3, h4, h5 {
 		</header>
 ​
 ​
-=======
-
-<!-- !PAGE CONTENT! -->
-	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-
-
->>>>>>> main:WebContent/index.html
 		<br> <br> <br>
 		<div class="w3-container" align="center">
 			<a href="login.jsp"><button class="w3-button w3-black">
@@ -108,26 +91,8 @@ html, body, h1, h2, h3, h4, h5 {
 					회원가입 하기 &nbsp;<i class="fa fa-arrow-right"></i>
 				</button></a>
 		</div>
-<<<<<<< HEAD:WebContent/board/test.jsp
 ​
 ​
-=======
-
-
-			<div class="w3-container" align="center">
-				<br> <br> <img src="./images/tototo.jpg"
-					alt="welcomepic2" width="1071" height="803"> <br> <br>
-
-			</div>
-
-
-
-
-
-
-
-
->>>>>>> main:WebContent/index.html
 		<!-- Footer -->
 		<footer class="w3-container w3-padding-16 w3-light-grey">
 			<h4>(주)후기적후기적컴퍼니</h4>

@@ -35,7 +35,6 @@
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<div class="w3-col l8 s12">
 			<div class="w3-container w3-white w3-margin w3-padding-large">
-				<%-- 				<form action="${pageContext.request.contextPath}/review?command=boardInsert">--%>
 				<form action="${pageContext.request.contextPath}/review"
 					method="post">
 					<input type="hidden" name="command" value="boardInsert">
@@ -57,10 +56,8 @@
 					<br>
 					<br>
 					<div class="w3-justify">
-						<%-- <p contenteditable="true" style="margin: 70px 20px 70px 40px"
-							name="content">내용 ${requestScope.content}</p> --%>
 						<div class="w3-center">
-							<input type="text" placeholder="내용을 입력하세요" name="content"
+							<input type="text" style="width:300px;height : 200px" placeholder="내용을 입력하세요" name="content"
 								required>
 						</div>
 						<p class="w3-right">

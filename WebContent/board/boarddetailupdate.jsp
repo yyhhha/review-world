@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="review.model.dto.UserDTO, review.model.dto.BoardDTO" %>
 <%
-System.out.println("===================================");
-System.out.println("===================================");
 	BoardDTO board = (BoardDTO)session.getAttribute("board");
 	String boardTitle = board.getTitle();
 	System.out.println(boardTitle);

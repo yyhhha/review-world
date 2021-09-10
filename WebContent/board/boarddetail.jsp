@@ -50,18 +50,9 @@
 						${requestScope.board.content}</p>
 					<p class="w3-center">
 						<button class="w3-button w3-padding-large w3-white w3-border"
-							onclick="location.href='${pageContext.request.contextPath}/review?command=boardlistAllUser'">
+							onclick="${pageContext.request.contextPath}/review?command=boardlistAllUser'">
 							<b>list &raquo;</b>
 						</button>
-					<form action="board/boarddetailupdate.jsp" method="post">
-						<p class="w3-center">
-						<input type="hidden" name="boardId" value="<%=boardId%>">
-						<button class="w3-button w3-padding-large w3-white w3-border"
-							type="submit">
-							<b>edit &raquo;</b>
-						</button>
-					</p>
-					</form>
 					<%
 						if (id.equals(bId)) {
 					%>

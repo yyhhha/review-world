@@ -36,24 +36,23 @@ html, body, h1, h2, h3, h4, h5 {
 	<table
 		class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
 		<tr align="center">
-			<td width="100">카테고리</td>
-			<td width="500">제목</td>
-			<td>작성자</td>
-			<td>추천수</td>
-			<td>조회수</td>
-			<td>작성일</td>
+			<td width="150" style="text-align:center"><b>카테고리</b></td>
+			<td width="700" style="text-align:center"><b>제목</b></td>
+			<td width="200" style="text-align:center"><b>작성자</b></td>
+			<td style="text-align:center"><b>추천수</b></td>
+			<td style="text-align:center"><b>조회수</b></td>
+			<td style="text-align:center"><b>작성일</b></td>
 		</tr>
 
 		<c:forEach items="${requestScope.boardlistAllUser}" var="data">
-			<input type="submit" name="boardId" value="${data.boardId}">
 			<tr>
-				<td>${data.categoryName}</td>
+				<td style="text-align:center">${data.categoryName}</td>
 				<td><a
 					href="${pageContext.request.contextPath}/review?command=boardDetail&boardId=${data.boardId}">${data.title}</a></td>
 				<td>${data.nickname}</td>
-				<td>${data.likes}</td>
-				<td>${data.views}</td>
-				<td>${data.boardDate}</td>
+				<td style="text-align:center">${data.likes}</td>
+				<td style="text-align:center">${data.views}</td>
+				<td style="text-align:center">${data.boardDate}</td>
 			</tr>
 		</c:forEach>
 	</table>

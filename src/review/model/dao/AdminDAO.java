@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import review.model.dto.BoardDTO;
-import review.model.dto.CommentDTO;
 import review.model.dto.UserDTO;
 import review.model.entity.RBoard;
 import review.model.entity.RCategory;
-import review.model.entity.RComment;
 import review.model.entity.RUser;
 import review.model.util.DBUtil;
 
@@ -28,7 +25,6 @@ public class AdminDAO {
 	}
 	
 
-	// 모든 게시글 리스트 검색
 	public List<BoardDTO> getBoardlistAll() throws SQLException {
 		EntityManager manager = DBUtil.getEntityManager();
 		List<RBoard> list = null;
@@ -65,7 +61,6 @@ public class AdminDAO {
 		return resultList;
 	}
 	
-
 	// 모든 회원 목록
 	@SuppressWarnings("unchecked")
 	public List<UserDTO> getMemberlistAll() throws SQLException {
@@ -85,27 +80,6 @@ public class AdminDAO {
 //			manager.close();
 		}
 		return memberList;
-	}
-
-	// 모든 댓글 목록
-	@SuppressWarnings("unchecked")
-	public List<CommentDTO> getCommentlistAll() throws SQLException {
-		EntityManager manager = DBUtil.getEntityManager();
-		List<RComment> list = null;
-		List<CommentDTO> commentlist = new ArrayList<>();
-		try {
-			list = manager.createQuery("SELECT r FROM RComment r").getResultList();
-
-			for (RComment comment : list) {
-				commentlist.add(new CommentDTO(comment.getBoardId().getBoardId(), comment.getCommentContent(),
-						comment.getCommentDate(), comment.getUserId().getUserId(), comment.getCommentId()));
-			}
-
-		} catch (Exception e) {
-		} finally {
-//			manager.close();
-		}
-		return commentlist;
 	}
 
 	// 글id로 해당 글에 대한 모든 값 반환
@@ -174,7 +148,7 @@ public class AdminDAO {
 
 		return result;
 	}
-	
+
 	public boolean deleteMemberAll(String[] memberIds) {
 		EntityManager em = DBUtil.getEntityManager();
 		em.getTransaction().begin();

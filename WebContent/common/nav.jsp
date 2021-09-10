@@ -7,7 +7,7 @@
 	<br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
-			<img src="./images/whowho.jpg" class="w3-circle w3-margin-right"
+			<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb6GFQD%2FbtreCsvPCzZ%2F72iuboM6O1uzY46zOfRcSk%2Fimg.png" class="w3-circle w3-margin-right"
 				style="width: 46px">
 		</div>
 		<div class="w3-col s8 w3-bar">
@@ -49,11 +49,11 @@
 
 	<header class="w3-container" style="padding-top: 22px">
 		<h5>
-			<b><i class="fa fa-dashboard"></i>후기 구경하세요! </b>
+			<b> 후기를 끄적끄적하면 후기적후기적 </b>
 		</h5>
 	</header>
 
 	<div class="w3-container" align="left">
-		<a href="board/boardwrite.jsp"><img src="./images/event.png" alt="welcomepic" width="1000" height="205"></a> <br> <br>
+		<a href="board/boardwrite.jsp"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdoizaG%2FbtreCsvPCxQ%2FB0tfQF88jIVQYeQxFEc34k%2Fimg.jpg" class=" alt="welcomepic" width="1000" height="205"></a> <br> <br>
 
 	</div>

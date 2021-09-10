@@ -19,6 +19,7 @@
 
 	<center>
 		<h3>${requestScope.errorMsg}</h3>
+		<h3>${sessionScope.errorMsg}</h3>
 		<div class="w3-container" align="center">
 			<br>
 			<br> <img src="./images/error.png" alt="sorry"

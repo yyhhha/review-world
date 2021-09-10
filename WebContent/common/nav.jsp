@@ -7,8 +7,7 @@
 	<br>
 	<div class="w3-container w3-row">
 		<div class="w3-col s4">
-			<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb6GFQD%2FbtreCsvPCzZ%2F72iuboM6O1uzY46zOfRcSk%2Fimg.png" class="w3-circle w3-margin-right"
-				style="width: 46px">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdoizaG%2FbtreCsvPCxQ%2FB0tfQF88jIVQYeQxFEc34k%2Fimg.jpg" class="w3-circle w3-margin-right" style="width:46px">
 		</div>
 		<div class="w3-col s8 w3-bar">
 				<span>반가워요!<br><strong>${sessionScope.user.nickName}</strong>님 환영해요!</span><br>
@@ -54,6 +53,6 @@
 	</header>
 
 	<div class="w3-container" align="left">
-		<a href="board/boardwrite.jsp"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdoizaG%2FbtreCsvPCxQ%2FB0tfQF88jIVQYeQxFEc34k%2Fimg.jpg" class=" alt="welcomepic" width="1000" height="205"></a> <br> <br>
+		<a href="board/boardwrite.jsp"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb6GFQD%2FbtreCsvPCzZ%2F72iuboM6O1uzY46zOfRcSk%2Fimg.png" class=" alt="welcomepic" width="1000" height="205"></a> <br> <br>
 
 	</div>
